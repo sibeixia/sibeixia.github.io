@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSC561 Project1</title>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <p>Eye location: X =
+        <input type="text" id="eyeLocationX" value="0.5">, Y =
+        <input type="text" id="eyeLocationY" value="0.5">, Z =
+        <input type="text" id="eyeLocationZ" value="-0.5"></p>
+    <p>View Up: X =
+        <input type="text" id="lookUpX" value="0">, Y =
+        <input type="text" id="lookUpY" value="1">, Z =
+        <input type="text" id="lookUpZ" value="0"></p>
+    <p>Look At: X =
+        <input type="text" id="lookAtX" value="0">, Y =
+        <input type="text" id="lookAtY" value="0">, Z =
+        <input type="text" id="lookAtZ" value="1"></p>
+    <button onclick="main();">Render</button>
+    <br>
+    <canvas id="viewport" width="512" height="512"></canvas>
+</body>
+</html>

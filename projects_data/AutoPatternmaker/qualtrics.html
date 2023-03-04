@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AutoPatternMaker</title>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/d3.v3.js"></script>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/main.js"></script>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/armstrong.js"></script>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/browser.maker.js" ></script>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/jszip.js" ></script>
+    <script src="https://sxia2.github.io/projects_data/AutoPatternmaker/bezier.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            color: white;
+        }
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            /* padding: 20px; */
+        }
+
+        .split_vertical {
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            overflow-x: hidden;
+            /* padding: 20px; */
+        }
+
+        .split_vertical_10 {
+            height: 10%;
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            overflow-x: hidden;
+            /* padding: 20px; */
+        }
+
+        .split_vertical_80 {
+            height: 80%;
+            width: 100%;
+            position: absolute;
+            /* z-index: 1; */
+            /* overflow-x: hidden; */
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* padding: 20px; */
+        }
+
+        .split30 {
+            height: 100%;
+            width: 30%;
+            position: absolute;
+            z-index: 1;
+            /* top: 0; */
+            overflow-x: hidden;
+            /* padding: 20px; */
+            background-color: #3C1053;
+
+        }
+
+        .split33 {
+            height: 100%;
+            width: 33.33%;
+            position: absolute;
+            z-index: 1;
+            /* top: 0; */
+            overflow-x: hidden;
+            /* padding: 20px; */
+        }
+
+        .split70 {
+            height: 100%;
+            width: 70%;
+            position: absolute;
+            z-index: 1;
+            /* top: 0; */
+            overflow-x: hidden;
+            /* padding: 20px; */
+
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+            /* background-color: white; */
+        }
+
+        .middle {
+            left: 33.33%;
+            /* background-color: rgb(92, 25, 25); */
+        }
+
+        .top {
+            top: 0;
+            /* background-color: rgb(52, 37, 122); */
+
+        }
+
+        .top_10 {
+            top: 10%;
+            /* transform: translate(-50%, -50%); */
+
+            /* background-color: rgb(52, 37, 122); */
+
+        }
+
+        .bottom {
+            bottom: 0;
+            /* background-color: rgb(109, 45, 45); */
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .centered_left {
+            position: absolute;
+            /* top: 50%; */
+            /* left: 10%; */
+            transform: translate(-50%, -50%);
+            text-align: left;
+        }
+
+        .button_yellow {
+            background-color: #FDD023;
+            /* Green */
+            border: none;
+            color: #3C1053;
+            padding: 10px 10px;
+            text-align: center;
+            /* text-decoration: none; */
+            /* display: inline-block; */
+            font-size: 16px;
+            font-weight : bold ;
+        }
+        .button {
+            background-color: lightgrey;
+            /* Green */
+            border: none;
+            color: #3C1053;
+            padding: 10px 10px;
+            text-align: center;
+            /* text-decoration: none;
+            display: inline-block; */
+            font-size: 16px;
+            font-weight : bold ;
+        }
+        /* .centered img {
+            width: 150px;
+            border-radius: 50%;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="split30 left">
+        <div class="split_vertical_10 top">
+            <div class="centered">
+                <button class="button" id="Armstrong" type="button" onclick="filename_inital('Armstrong')">
+                    Armstrong</button>
+            </div>
+
+
+        </div>
+        <div class="split_vertical_80 top_10" style="background-color: black;" style="padding-left: 5px;">
+            <form id="csvForm">
+                <p>Choose a method from the tabs...</p>
+            </form>
+        </div>
+        <div class="split_vertical_10 bottom">
+            <div class="centered">
+
+                <button class="button" id="generate" onclick="display()">Generate</button>
+                <button class="button_yellow" id="download" hidden='hidden' onclick="download()">Download</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="split70 right">
+        <div class="split33 left">
+            <div class="split_vertical top">
+                <div class="centered" id="pattern">
+                </div>
+
+            </div>
+            <div class="split_vertical bottom">
+                <div class="centered" id="pattern">
+                </div>
+            </div>
+        </div>
+        <div class="split33 middle">
+            <div class="centered" id="pattern">
+            </div>
+        </div>
+        <div class="split33 right">
+            <div class="split_vertical top">
+                <div class="centered" id="pattern">
+                </div>
+            </div>
+            <div class="split_vertical bottom">
+                <div class="centered" id="pattern">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
