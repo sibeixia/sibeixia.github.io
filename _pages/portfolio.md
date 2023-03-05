@@ -6,7 +6,7 @@ title: "Portfolio"
   - [Sibei Xia's Google Scholar Page](https://scholar.google.com/citations?hl=en&user=uOIJILoAAAAJ)
 
 ### Ongoing Research Works
-  - [Baby Fever-Detection Hat](https://scholar.google.com/citations?hl=en&user=uOIJILoAAAAJ)
+  - [Baby Fever-Detection Hat](https://sibeixia.github.io/project/baby_hat)
 
 ### Creatvie Designs
   - [Knitting-Shima Seiki 2015](https://sibeixia.github.io/project/shima)
