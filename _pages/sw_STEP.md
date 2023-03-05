@@ -9,11 +9,11 @@ The apparel design concentration provides students with an overview of the princ
 
 ### Fall 2017  
 <figure>
-  <a href="https://sxia2.github.io/student_works/STEP01.jpg"><img src="https://sxia2.github.io/student_works/STEP01.jpg"></a>
+  <a href="https://sibeixia.github.io/student_works/STEP01.jpg"><img src="https://sibeixia.github.io/student_works/STEP01.jpg"></a>
 </figure>
 <figure>
-  <a href="https://sxia2.github.io/student_works/STEP02.jpg"><img src="https://sxia2.github.io/student_works/STEP02.jpg"></a>
+  <a href="https://sibeixia.github.io/student_works/STEP02.jpg"><img src="https://sibeixia.github.io/student_works/STEP02.jpg"></a>
 </figure>
 <figure>
-  <a href="https://sxia2.github.io/student_works/STEP03.jpg"><img src="https://sxia2.github.io/student_works/STEP03.jpg"></a>
+  <a href="https://sibeixia.github.io/student_works/STEP03.jpg"><img src="https://sibeixia.github.io/student_works/STEP03.jpg"></a>
 </figure>
