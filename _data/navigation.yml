@@ -1,17 +1,17 @@
 # main links
 main:
   - title: "Home"
-    url: https://sxia2.github.io/
-  - title: "About"
-    url: /about/
+    url: https://sibeixia.github.io/
+  # - title: "About"
+  #   url: /about/
   - title: "Education"
     url: /education/
   - title: "Teaching"
     url: /teaching/ 
   - title: "Research"
     url: /research/
-  - title: "Publication"
-    url: /publication/
+  # - title: "Publication"
+  #   url: /publication/
 #  - title: "Working"
 #    url: /working/ 
   - title: "Projects"
