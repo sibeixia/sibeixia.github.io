@@ -1,9 +1,14 @@
 ---
-permalink: /projects/
-title: "Projects"
+permalink: /portfolio/
+title: "Portfolio"
 ---
+### Research Works
+  - [Fashion Design I (FTD 215) 2015 & 2017](https://sxia2.github.io/student/FTD215)
+  - [Summer Textile Exploration Program 2017](https://sxia2.github.io/student/step)
+  - [Fashion Product Analysis (FTM 219) 2016](https://sxia2.github.io/student/FTM219)
 
-### Designs
+
+### Creatvie Designs
   - [Knitting-Shima Seiki 2015](https://sxia2.github.io/project/shima)
   - [CAD-Gerber 2012](https://sxia2.github.io/project/gerber)
   - [Cotton First Competition 2012](https://sxia2.github.io/project/cottonfirst)
@@ -15,7 +20,8 @@ title: "Projects"
 ### Programs
 <!---  - [AutoPatternmaker](https://sxia2.github.io/projects_data/AutoPatternmaker)-->
   - [Web game Frogger 2017](https://sxia2.github.io/projects_data/Program4)
-  
+
+
 ### Student Works
   - [Fashion Design I (FTD 215) 2015 & 2017](https://sxia2.github.io/student/FTD215)
   - [Summer Textile Exploration Program 2017](https://sxia2.github.io/student/step)
