@@ -10,6 +10,6 @@ As part of the lecture, students get the chance to practice using the textile pr
   <a href="https://sibeixia.github.io/projects_data/TAM3230/print2_1.png"><img src="https://sibeixia.github.io/projects_data/TAM3230/print2_1.png"></a>
 </figure>
 <figure class="half">
-  <a href="https://sibeixia.github.io/projects_data/TAM4037/print1_2.jpg"><img src="https://sibeixia.github.io/projects_data/TAM4037/print1_2.jpg"></a>
-  <a href="https://sibeixia.github.io/projects_data/TAM4037/print2_2.jpg"><img src="https://sibeixia.github.io/projects_data/TAM4037/print2_2.jpg"></a>
+  <a href="https://sibeixia.github.io/projects_data/TAM3230/print1_2.jpg"><img src="https://sibeixia.github.io/projects_data/TAM3230/print1_2.jpg"></a>
+  <a href="https://sibeixia.github.io/projects_data/TAM3230/print2_2.jpg"><img src="https://sibeixia.github.io/projects_data/TAM3230/print2_2.jpg"></a>
 </figure>
