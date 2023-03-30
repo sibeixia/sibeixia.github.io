@@ -26,14 +26,13 @@ title: "Portfolio"
   - [AutoPatternMaker 2022](https://sibeixia.github.io/projects_data/AutoPatternmaker)
   - [Web game Frogger 2017](https://sibeixia.github.io/projects_data/Program4)
 
-
 ### Student Works
-  - [Product Development (TAM 3032) 2021/2022](https://sibeixia.github.io/student/TAM3032)
+  - [Product Development (TAM 3032) 2021 & 2022](https://sibeixia.github.io/student/TAM3032)
   - [Draping (TAM 4037) 2021](https://sibeixia.github.io/student/TAM4037)
   - [3D Simulation (TAM 3230) 2021](https://sibeixia.github.io/student/TAM3230_simulate)
   - [Patternmaking (TAM 3037) 2020](https://sibeixia.github.io/student/TAM3037)
   - [Engineering Prints (TAM 3230) 2020](https://sibeixia.github.io/student/TAM3230_prints)
-  - [Tennis Dress Competition (Sponsored by Cotton Inc.)](https://sibeixia.github.io/student/tennis_dress)
+  - [Tennis Dress Competition (Sponsored by Cotton Inc.) 2020](https://sibeixia.github.io/student/tennis_dress)
   - [Fashion Design I (FTD 215) 2015 & 2017](https://sibeixia.github.io/student/FTD215)
   - [Summer Textile Exploration Program 2017](https://sibeixia.github.io/student/step)
   - [Fashion Product Analysis (FTM 219) 2016](https://sibeixia.github.io/student/FTM219)
