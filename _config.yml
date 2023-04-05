@@ -80,7 +80,7 @@ social:
 analytics:
   provider               : "custom" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "G-2QLKENL0Y7"
+    tracking_id          : #"G-2QLKENL0Y7"
 
 
 # Site Author
