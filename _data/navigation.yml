@@ -1,0 +1,22 @@
+# main links
+main:
+  - title: "Home"
+    url: https://sibeixia.github.io/
+  - title: "CV"
+    url: /cv/
+  # - title: "About"
+  #   url: /about/
+  # - title: "Education"
+  #   url: /education/
+  # - title: "Teaching"
+  #   url: /teaching/ 
+  # - title: "Research"
+  #   url: /research/
+  # - title: "Publication"
+  #   url: /publication/
+#  - title: "Working"
+#    url: /working/ 
+  - title: "Portfolio"
+    url: /portfolio/
+  # - title: "Others"
+  #   url: /others/
