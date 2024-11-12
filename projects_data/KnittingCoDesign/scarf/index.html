@@ -187,10 +187,10 @@
 <body>
 
   <div class="container">
-    <h1>Customize Your Vest</h1>
+    <h1>Customize Your Scarf</h1>
     <div id="display">
       <div class="sample">
-        <img src="sample.jpg" alt="Sample Image" width="400" height="500">
+        <img src="sample.png" alt="Sample Image" width="400" height="500">
       </div>
       <div class="tshirt" id="tshirt-preview">
         <canvas id="canvas" width="400" height="500"></canvas>
@@ -573,7 +573,7 @@
 
     downloadBtn.addEventListener('click', function () {
       const link = document.createElement('a');
-      link.download = 'vest-design.png';
+      link.download = 'scarf-design.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
