@@ -48,8 +48,11 @@
       border: 2px solid #ccc;
       display: block; */
       position: relative;
-      width: 400px;
-      height: 500px;
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      max-height: 500px;
+      object-fit: contain;
       margin: 20px auto;
       /* Ensures no extra spacing from inline elements */
     }
@@ -187,7 +190,7 @@
 <body>
 
   <div class="container">
-    <h1>Customize Your Vest</h1>
+    <h1>Customize Your Scarf</h1>
     <div id="display">
       <div class="sample">
         <img src="sample.jpg" alt="Sample Image" width="400" height="500">
@@ -196,8 +199,19 @@
         <canvas id="canvas" width="400" height="500"></canvas>
       </div>
     </div>
+    <div>
+      <h3 for="colorPicker">Step 1: Choose Background Color:</h3>
+      <select id="colorPicker">
+        <option value="#ffffff">White</option>
+        <option value="#ff595e">Red</option>
+        <option value="#ffca3a">Yellow</option>
+        <option value="#8ac926">Green</option>
+        <option value="#1982c4">Blue</option>
+        <option value="#6a4c93">Purple</option>
+      </select>
+    </div>
     <div id="color-selection">
-      <h3>Pick Three Colors:</h3>
+      <h3>Step 2: Pick three colors for your design:</h3>
       <div class="color-square-container">
         <div class="color-square" style="background-color: #ff595e;" data-color="#ff595e">
           <span class="checkmark">✔</span>
@@ -221,30 +235,18 @@
     <!-- 
     <label for="colorPicker">Choose Background Color:</label>
     <input type="color" id="colorPicker" value="#ffffff"> -->
-    <label for="colorPicker">Choose Background Color:</label>
-    <select id="colorPicker">
-      <option value="#ffffff">White</option>
-      <option value="#ff595e">Red</option>
-      <option value="#ffca3a">Yellow</option>
-      <option value="#8ac926">Green</option>
-      <option value="#1982c4">Blue</option>
-      <option value="#6a4c93">Purple</option>
-    </select>
 
-    <label for="imageUpload">Upload Your Design:</label>
-    <input type="file" id="imageUpload" accept="image/*">
+    <div id="color-selection">
 
-    <div id="controls">
-      <label for="scaleRange">Scale Image:</label>
+      <h3 for="imageUpload">Step 3: Upload Your Design:</h3>
+      <input type="file" id="imageUpload" accept="image/*">
+      <label for="scaleRange">Optional: Scale Image:</label>
       <input type="range" id="scaleRange" min="0.1" max="2" step="0.1" value="1">
-
-      <label for="colorReduceRange">Reduce Colors:</label>
-      <input type="range" id="colorReduceRange" min="2" max="256" step="1" value="256">
-      <span id="colorLevels">256 colors</span>
     </div>
 
+
+
     <div class="download-section">
-      <button id="download-btn" disabled>Download Design</button>
       <button id="recenter-btn" disabled>Re-Center Image</button>
       <button id="redo-btn" class="redo-btn">Redo</button>
       <button id="expand-questions-answer-btn">Expand Questions</button>
@@ -272,7 +274,13 @@
         </select>
       </div>
     </div>
+    <div>
+      <button id="download-btn" disabled>Submit Design</button>
 
+      <!-- <label for="colorReduceRange">Reduce Colors:</label>
+        <input type="range" id="colorReduceRange" min="2" max="256" step="1" value="256">
+        <span id="colorLevels">256 colors</span> -->
+    </div>
   </div>
 
   <script>
@@ -319,7 +327,7 @@
     const colorPicker = document.getElementById('colorPicker');
     const imageUpload = document.getElementById('imageUpload');
     const scaleRange = document.getElementById('scaleRange');
-    const colorReduceRange = document.getElementById('colorReduceRange');
+    // const colorReduceRange = document.getElementById('colorReduceRange');
     const colorLevels = document.getElementById('colorLevels');
     const downloadBtn = document.getElementById('download-btn');
     const redoBtn = document.getElementById('redo-btn');
@@ -377,35 +385,48 @@
 
     // Load the sample image as background
     const sampleImage = new Image();
-    sampleImage.src = 'sample.PNG';
+    sampleImage.src = 'template.PNG';
     sampleImage.onload = function () {
       drawTshirt();
     };
 
     function drawTshirt() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       // Draw the sample image as background
-      ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
+      const canvasAspect = canvas.width / canvas.height;
+      const imageAspect = sampleImage.width / sampleImage.height;
+      let scaledWidth, scaledHeight;
+
+      if (imageAspect > canvasAspect) {
+        scaledWidth = canvas.width;
+        scaledHeight = scaledWidth / imageAspect;
+      } else {
+        scaledHeight = canvas.height;
+        scaledWidth = scaledHeight * imageAspect;
+      }
+
+      // Calculate positions to center the scaled image within the canvas
+      const xOffset = (canvas.width - scaledWidth) / 2;
+      const yOffset = (canvas.height - scaledHeight) / 2;
+
 
       // Draw the T-shirt color overlay
       ctx.fillStyle = colorPicker.value;
 
       ctx.beginPath();
-      ctx.moveTo(40, 210);
-      ctx.lineTo(355, 210);
-      ctx.lineTo(355, 410);
-      ctx.lineTo(40, 410);
-      ctx.lineTo(40, 210);
-      // ctx.moveTo(120, 100);
-      // ctx.lineTo(280, 100);
-      // ctx.lineTo(320, 150);
-      // ctx.lineTo(320, 200);
-      // ctx.lineTo(280, 200);
-      // ctx.lineTo(280, 550);
-      // ctx.lineTo(120, 550);
-      // ctx.lineTo(120, 200);
-      // ctx.lineTo(80, 200);
-      // ctx.lineTo(80, 150);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(400, 0);
+      ctx.lineTo(400, 500);
+      ctx.lineTo(0, 500);
+      ctx.lineTo(0, 0);
+    
+      // ctx.moveTo(40, 210);
+      // ctx.lineTo(355, 210);
+      // ctx.lineTo(355, 410);
+      // ctx.lineTo(40, 410);
+      // ctx.lineTo(40, 210);
+
       ctx.closePath();
       ctx.fill();
       ctx.strokeStyle = '#ccc';
@@ -415,12 +436,14 @@
       // if (uploadedImage) {
       //   drawImage();
       // }
+      // Draw the sample image centered on the canvas
+      ctx.drawImage(sampleImage, xOffset, yOffset, scaledWidth, scaledHeight);
     }
 
     imageUpload.addEventListener('change', function (event) {
       scaleRange.value = '1';
-      colorReduceRange.value = '256';
-      colorLevels.textContent = '256 colors';
+      // colorReduceRange.value = '256';
+      // colorLevels.textContent = '256 colors';
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -433,7 +456,6 @@
             imgX = (canvas.width - imgWidth * parseFloat(scaleRange.value)) / 2;
             imgY = (canvas.height - imgHeight * parseFloat(scaleRange.value)) / 2;
             drawImage();
-
           };
           img.src = e.target.result;
         };
@@ -456,21 +478,29 @@
       const scaledWidth = imgWidth * scale;
       const scaledHeight = imgHeight * scale;
 
+
+
       //       // Calculate new centered position based on the scaled dimensions
       // imgX = (canvas.width - scaledWidth) / 2;
       // imgY = (canvas.height - scaledHeight) / 2;
-
-      drawTshirt();
 
       ctx.save();
       // const path = new Path2D();
 
       ctx.beginPath();
-      ctx.moveTo(40, 210);
-      ctx.lineTo(355, 210);
-      ctx.lineTo(355, 410);
-      ctx.lineTo(40, 410);
-      ctx.lineTo(40, 210);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(400, 0);
+      ctx.lineTo(400, 500);
+      ctx.lineTo(0, 500);
+      ctx.lineTo(0, 0);
+    
+            // ctx.moveTo(40, 210);
+      // ctx.lineTo(355, 210);
+      // ctx.lineTo(355, 410);
+      // ctx.lineTo(40, 410);
+      // ctx.lineTo(40, 210);
+
+
       // ctx.moveTo(120, 100);
       // ctx.lineTo(280, 100);
       // ctx.lineTo(320, 150);
@@ -483,6 +513,7 @@
       // ctx.lineTo(80, 150);
       ctx.closePath();
       ctx.clip();
+      drawTshirt();
 
       ctx.drawImage(uploadedImage, imgX, imgY, scaledWidth, scaledHeight);
 
@@ -513,6 +544,28 @@
 
       ctx.putImageData(imageData, 0, 0);
       ctx.restore();
+
+      // Draw the sample image as background
+      const canvasAspect = canvas.width / canvas.height;
+      const imageAspect = sampleImage.width / sampleImage.height;
+      let scaledWidth_template, scaledHeight_template;
+
+      if (imageAspect > canvasAspect) {
+        scaledWidth_template = canvas.width;
+        scaledHeight_template = scaledWidth_template / imageAspect;
+      } else {
+        scaledHeight_template = canvas.height;
+        scaledWidth_template = scaledHeight_template * imageAspect;
+      }
+
+      // Calculate positions to center the scaled image within the canvas
+      const xOffset = (canvas.width - scaledWidth_template) / 2;
+      const yOffset = (canvas.height - scaledHeight_template) / 2;
+
+      // ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
+
+      ctx.drawImage(sampleImage, xOffset, yOffset, scaledWidth_template, scaledHeight_template);
+
     }
 
     scaleRange.addEventListener('input', function () {
@@ -525,16 +578,16 @@
       drawImage();
     });
 
-    colorReduceRange.addEventListener('input', function () {
-      if (uploadedImage) {
-        ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
+    // colorReduceRange.addEventListener('input', function () {
+    //   if (uploadedImage) {
+    //     ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
 
-        drawImage();
-        applyColorComposite(colorReduceRange.value);
-        colorLevels.textContent = `${colorReduceRange.value} colors`;
+    //     drawImage();
+    //     applyColorComposite(colorReduceRange.value);
+    //     colorLevels.textContent = `${colorReduceRange.value} colors`;
 
-      }
-    });
+    //   }
+    // });
 
     canvas.addEventListener('mousedown', function (event) {
       const rect = canvas.getBoundingClientRect();
@@ -573,7 +626,7 @@
 
     downloadBtn.addEventListener('click', function () {
       const link = document.createElement('a');
-      link.download = 'vest-design.png';
+      link.download = 'scarf-design.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
