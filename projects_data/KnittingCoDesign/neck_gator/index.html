@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8">
+  <title>T-Shirt Customization with Image Editing</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f5;
+      color: #333;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      margin: 20px auto;
+      /* Ensure container is centered vertically with margin */
+      max-width: 1000px;
+    }
+
+    h1 {
+      color: #444;
+    }
+
+    .container {
+
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 1000px;
+    }
+
+    .tshirt {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      margin: 20px auto;
+    }
+
+    .sample img {
+      /* border-radius: 10px;
+      border: 2px solid #ccc;
+      display: block; */
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+      max-height: 500px;
+      object-fit: contain;
+      margin: 20px auto;
+      /* Ensures no extra spacing from inline elements */
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 500px;
+      z-index: 10;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="color"],
+    input[type="range"],
+    input[type="file"] {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    button:disabled {
+      background-color: #bbb;
+      cursor: not-allowed;
+    }
+
+    #controls {
+      margin: 20px 0;
+    }
+
+    .download-section {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .redo-btn {
+      background-color: #dc3545;
+    }
+
+    .redo-btn:hover {
+      background-color: #c82333;
+    }
+
+
+
+    #display {
+      display: flex;
+      /* Flexbox to place elements side by side */
+      justify-content: center;
+      /* Center-align horizontally */
+      align-items: flex-start;
+      /* Align elements at the top */
+      gap: 10px;
+      /* Space between elements */
+    }
+
+    #color-selection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .color-square-container {
+      display: flex;
+      /* Align color squares in a row */
+      justify-content: center;
+      gap: 10px;
+      /* Add space between squares */
+      margin-top: 10px;
+    }
+
+    .color-square {
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      /* border: 2px solid transparent; */
+      border: 2px solid transparent;
+      border-color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      transition: border 0.3s;
+      display: inline-block;
+    }
+
+    .color-square.selected {
+      border-color: #000;
+    }
+
+    .color-square .checkmark {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .color-square.selected .checkmark {
+      display: block;
+    }
+
+    #selected-colors {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Customize Your Neck_Gator</h1>
+    <div id="display">
+      <div class="sample">
+        <img src="sample.jpg" alt="Sample Image" width="400" height="500">
+      </div>
+      <div class="tshirt" id="tshirt-preview">
+        <canvas id="canvas" width="400" height="500"></canvas>
+      </div>
+    </div>
+    <div>
+      <h3 for="colorPicker">Step 1: Choose Background Color:</h3>
+      <select id="colorPicker">
+        <option value="#ffffff">White</option>
+        <option value="#000000">Black</option>
+        <option value="#780000">Red</option>
+        <option value="#00027f">Navy</option>
+        <!-- <option value="#1982c4">Blue</option> -->
+        <option value="#5d3ea0">Purple</option>
+      </select>
+    </div>
+    <div id="color-selection">
+      <h3>Step 2: Pick three colors for your design:</h3>
+      <div class="color-square-container">
+        <div class="color-square" style="background-color: #ffffff;" data-color="#ffffff">
+          <span class="checkmark">✔</span>
+        </div>
+        <div class="color-square" style="background-color: #000000;" data-color="#000000">
+          <span class="checkmark">✔</span>
+        </div>
+        <div class="color-square" style="background-color: #780000;" data-color="#780000">
+          <span class="checkmark">✔</span>
+        </div>
+        <div class="color-square" style="background-color: #00027f;" data-color="#00027f">
+          <span class="checkmark">✔</span>
+        </div>
+        <!-- <div class="color-square" style="background-color: #1982c4;" data-color="#1982c4">
+          <span class="checkmark">✔</span>
+        </div> -->
+        <div class="color-square" style="background-color: #5d3ea0;" data-color="#5d3ea0">
+          <span class="checkmark">✔</span>
+        </div>
+      </div>
+      <p id="selected-colors">Selected: None</p>
+    </div>
+
+    <!-- 
+    <label for="colorPicker">Choose Background Color:</label>
+    <input type="color" id="colorPicker" value="#ffffff"> -->
+
+    <div id="color-selection">
+
+      <h3 for="imageUpload">Step 3: Upload Your Design:</h3>
+      <input type="file" id="imageUpload" accept="image/*">
+      <label for="scaleRange">Optional: Scale Image:</label>
+      <input type="range" id="scaleRange" min="0.1" max="2" step="0.1" value="1">
+    </div>
+
+
+
+    <div class="download-section">
+      <button id="recenter-btn" disabled>Re-Center Image</button>
+      <button id="redo-btn" class="redo-btn">Redo</button>
+      <button id="expand-questions-answer-btn">Expand Questions</button>
+    </div>
+
+    <div id="additional-questions-answer" style="display: none; margin-top: 20px;">
+      <h3>Additional Questions</h3>
+
+      <div class="question">
+        <label for="feature-like">What features do you like the most?</label>
+        <input type="text" id="feature-like" placeholder="Enter your answer...">
+      </div>
+
+      <div class="question">
+        <label for="improvement">What improvements would you like to see?</label>
+        <input type="text" id="improvement" placeholder="Enter your answer...">
+      </div>
+
+      <div class="question">
+        <label for="recommendation">Would you recommend this tool?</label>
+        <select id="recommendation">
+          <option value="">Select an option</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <button id="download-btn" disabled>Submit Design</button>
+
+      <!-- <label for="colorReduceRange">Reduce Colors:</label>
+        <input type="range" id="colorReduceRange" min="2" max="256" step="1" value="256">
+        <span id="colorLevels">256 colors</span> -->
+    </div>
+  </div>
+
+  <script>
+
+    // Helper to convert a hex color to RGB
+    function hexToRgb(hex) {
+      const bigint = parseInt(hex.slice(1), 16);
+      return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255
+      };
+    }
+
+    // Helper to calculate the Euclidean distance between two RGB colors
+    function colorDistance(color1, color2) {
+      return Math.sqrt(
+        Math.pow(color1.r - color2.r, 2) +
+        Math.pow(color1.g - color2.g, 2) +
+        Math.pow(color1.b - color2.b, 2)
+      );
+    }
+
+    // Function to get the closest color from the selected colors
+    function getClosestColor(r, g, b) {
+      const selectedRgbColors = selectedColors.map(hexToRgb);
+      let closestColor = selectedRgbColors[0];
+      let minDistance = Infinity;
+
+      selectedRgbColors.forEach(color => {
+        const distance = colorDistance(color, { r, g, b });
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestColor = color;
+        }
+      });
+
+      return `rgb(${closestColor.r}, ${closestColor.g}, ${closestColor.b})`;
+    }
+
+    // Get the DOM elements
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const colorPicker = document.getElementById('colorPicker');
+    const imageUpload = document.getElementById('imageUpload');
+    const scaleRange = document.getElementById('scaleRange');
+    // const colorReduceRange = document.getElementById('colorReduceRange');
+    const colorLevels = document.getElementById('colorLevels');
+    const downloadBtn = document.getElementById('download-btn');
+    const redoBtn = document.getElementById('redo-btn');
+
+    const featureLikeInput = document.getElementById('feature-like');
+    const improvementInput = document.getElementById('improvement');
+    const recommendationSelect = document.getElementById('recommendation');
+
+    downloadBtn.disabled = true; // Disable download button initially
+    const recenterBtn = document.getElementById('recenter-btn');
+    let imgX = 0, imgY = 0; // Store image position
+    let imgWidth = 0, imgHeight = 0; // Store original image size
+    let uploadedImage = null; // Store the uploaded image
+
+    // Function to reset the position and scale of the uploaded image
+    function recenterImage() {
+      if (!uploadedImage) return;
+
+      // Reset scale range to default
+      scaleRange.value = '1';
+      const scale = parseFloat(scaleRange.value);
+
+      // Recalculate image dimensions and position to center it
+      imgWidth = uploadedImage.width;
+      imgHeight = uploadedImage.height;
+      imgX = (canvas.width - imgWidth * scale) / 2;
+      imgY = (canvas.height - imgHeight * scale) / 2;
+
+      drawImage(); // Redraw the image at the new position with the default scale
+    }
+    // Function to validate if all questions are answered
+    function validateQuestions() {
+      const isFeatureLikeFilled = featureLikeInput.value.trim() !== '';
+      const isImprovementFilled = improvementInput.value.trim() !== '';
+      const isRecommendationSelected = recommendationSelect.value !== '';
+
+      // Enable download button only if all questions are answered
+      downloadBtn.disabled = !(isFeatureLikeFilled && isImprovementFilled && isRecommendationSelected);
+    }
+
+    // Add event listeners to question inputs to trigger validation
+    featureLikeInput.addEventListener('input', validateQuestions);
+    improvementInput.addEventListener('input', validateQuestions);
+    recommendationSelect.addEventListener('change', validateQuestions);
+
+    // Change T-shirt color based on the color picker
+    colorPicker.addEventListener('change', function () {
+      ctx.fillStyle = this.value;
+      drawTshirt();
+      // drawImage();
+      if (uploadedImage) {
+        drawImage();
+      }
+    });
+
+    // Load the sample image as background
+    const sampleImage = new Image();
+    sampleImage.src = 'template.PNG';
+    sampleImage.onload = function () {
+      drawTshirt();
+    };
+
+    function drawTshirt() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the sample image as background
+      const canvasAspect = canvas.width / canvas.height;
+      const imageAspect = sampleImage.width / sampleImage.height;
+      let scaledWidth, scaledHeight;
+
+      if (imageAspect > canvasAspect) {
+        scaledWidth = canvas.width;
+        scaledHeight = scaledWidth / imageAspect;
+      } else {
+        scaledHeight = canvas.height;
+        scaledWidth = scaledHeight * imageAspect;
+      }
+
+      // Calculate positions to center the scaled image within the canvas
+      const xOffset = (canvas.width - scaledWidth) / 2;
+      const yOffset = (canvas.height - scaledHeight) / 2;
+
+
+      // Draw the T-shirt color overlay
+      ctx.fillStyle = colorPicker.value;
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(400, 0);
+      ctx.lineTo(400, 500);
+      ctx.lineTo(0, 500);
+      ctx.lineTo(0, 0);
+    
+      // ctx.moveTo(40, 210);
+      // ctx.lineTo(355, 210);
+      // ctx.lineTo(355, 410);
+      // ctx.lineTo(40, 410);
+      // ctx.lineTo(40, 210);
+
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = '#ccc';
+      ctx.lineWidth = 5;
+      ctx.stroke();
+      // // If an image is uploaded, draw it on top
+      // if (uploadedImage) {
+      //   drawImage();
+      // }
+      // Draw the sample image centered on the canvas
+      ctx.drawImage(sampleImage, xOffset, yOffset, scaledWidth, scaledHeight);
+    }
+
+    imageUpload.addEventListener('change', function (event) {
+      scaleRange.value = '1';
+      // colorReduceRange.value = '256';
+      // colorLevels.textContent = '256 colors';
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            uploadedImage = img;
+            imgWidth = img.width;
+            imgHeight = img.height;
+            imgX = (canvas.width - imgWidth * parseFloat(scaleRange.value)) / 2;
+            imgY = (canvas.height - imgHeight * parseFloat(scaleRange.value)) / 2;
+            drawImage();
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        // Enable the Re-Center button since an image is uploaded
+        recenterBtn.disabled = false;
+        console.log('sx: button should be active')
+      }
+
+
+    });
+
+
+    // Add event listener to Re-Center button
+    recenterBtn.addEventListener('click', recenterImage);
+
+    function drawImage() {
+
+      const scale = parseFloat(scaleRange.value);
+      const scaledWidth = imgWidth * scale;
+      const scaledHeight = imgHeight * scale;
+
+
+
+      //       // Calculate new centered position based on the scaled dimensions
+      // imgX = (canvas.width - scaledWidth) / 2;
+      // imgY = (canvas.height - scaledHeight) / 2;
+
+      ctx.save();
+      // const path = new Path2D();
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(400, 0);
+      ctx.lineTo(400, 500);
+      ctx.lineTo(0, 500);
+      ctx.lineTo(0, 0);
+    
+            // ctx.moveTo(40, 210);
+      // ctx.lineTo(355, 210);
+      // ctx.lineTo(355, 410);
+      // ctx.lineTo(40, 410);
+      // ctx.lineTo(40, 210);
+
+
+      // ctx.moveTo(120, 100);
+      // ctx.lineTo(280, 100);
+      // ctx.lineTo(320, 150);
+      // ctx.lineTo(320, 200);
+      // ctx.lineTo(280, 200);
+      // ctx.lineTo(280, 550);
+      // ctx.lineTo(120, 550);
+      // ctx.lineTo(120, 200);
+      // ctx.lineTo(80, 200);
+      // ctx.lineTo(80, 150);
+      ctx.closePath();
+      ctx.clip();
+      drawTshirt();
+
+      ctx.drawImage(uploadedImage, imgX, imgY, scaledWidth, scaledHeight);
+
+      // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      const data = imageData.data;
+
+      // Process each pixel and map it to the closest selected color
+      for (let i = 0; i < data.length; i += 4) {
+        var x = (i / 4) % canvas.width;
+        var y = Math.floor((i / 4) / canvas.width);
+        if (ctx.isPointInPath(x, y)) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+
+          const closestColor = getClosestColor(r, g, b);
+          const [newR, newG, newB] = closestColor.match(/\d+/g).map(Number);
+
+          data[i] = newR;
+          data[i + 1] = newG;
+          data[i + 2] = newB;
+        }
+
+      }
+      // ctx.drawImage(data, imgX, imgY, scaledWidth, scaledHeight);
+
+      ctx.putImageData(imageData, 0, 0);
+      ctx.restore();
+
+      // Draw the sample image as background
+      const canvasAspect = canvas.width / canvas.height;
+      const imageAspect = sampleImage.width / sampleImage.height;
+      let scaledWidth_template, scaledHeight_template;
+
+      if (imageAspect > canvasAspect) {
+        scaledWidth_template = canvas.width;
+        scaledHeight_template = scaledWidth_template / imageAspect;
+      } else {
+        scaledHeight_template = canvas.height;
+        scaledWidth_template = scaledHeight_template * imageAspect;
+      }
+
+      // Calculate positions to center the scaled image within the canvas
+      const xOffset = (canvas.width - scaledWidth_template) / 2;
+      const yOffset = (canvas.height - scaledHeight_template) / 2;
+
+      // ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
+
+      ctx.drawImage(sampleImage, xOffset, yOffset, scaledWidth_template, scaledHeight_template);
+
+    }
+
+    scaleRange.addEventListener('input', function () {
+      const scale = parseFloat(scaleRange.value);
+      const scaledWidth = imgWidth * scale;
+      const scaledHeight = imgHeight * scale;
+      // Calculate new centered position based on the scaled dimensions
+      imgX = (canvas.width - scaledWidth) / 2;
+      imgY = (canvas.height - scaledHeight) / 2;
+      drawImage();
+    });
+
+    // colorReduceRange.addEventListener('input', function () {
+    //   if (uploadedImage) {
+    //     ctx.drawImage(sampleImage, 0, 0, canvas.width, canvas.height);
+
+    //     drawImage();
+    //     applyColorComposite(colorReduceRange.value);
+    //     colorLevels.textContent = `${colorReduceRange.value} colors`;
+
+    //   }
+    // });
+
+    canvas.addEventListener('mousedown', function (event) {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+      const scale = parseFloat(scaleRange.value);
+      const scaledWidth = imgWidth * scale;
+      const scaledHeight = imgHeight * scale;
+
+      if (mouseX >= imgX && mouseX <= imgX + scaledWidth &&
+        mouseY >= imgY && mouseY <= imgY + scaledHeight) {
+        isDragging = true;
+        startX = mouseX - imgX;
+        startY = mouseY - imgY;
+      }
+    });
+
+    canvas.addEventListener('mousemove', function (event) {
+      if (isDragging) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+        imgX = mouseX - startX;
+        imgY = mouseY - startY;
+        drawImage();
+      }
+    });
+
+    canvas.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+
+    canvas.addEventListener('mouseleave', function () {
+      isDragging = false;
+    });
+
+    downloadBtn.addEventListener('click', function () {
+      const link = document.createElement('a');
+      link.download = 'Neck_Gator-design.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    redoBtn.addEventListener('click', function () {
+      window.location.reload();
+    });
+
+    drawTshirt();
+
+    const expandQuestionsAnswerBtn = document.getElementById('expand-questions-answer-btn');
+    const additionalQuestionsAnswer = document.getElementById('additional-questions-answer');
+
+    expandQuestionsAnswerBtn.addEventListener('click', function () {
+      additionalQuestionsAnswer.style.display = additionalQuestionsAnswer.style.display === 'none' ? 'block' : 'none';
+    });
+
+    const colorSquares = document.querySelectorAll('.color-square');
+    const selectedColorsDisplay = document.getElementById('selected-colors');
+    let selectedColors = [];
+
+    // Function to handle color selection and update the canvas
+    function updateSelectedColors() {
+      selectedColorsDisplay.textContent = `Selected: ${selectedColors.join(', ')}`;
+      if (uploadedImage) {
+        drawImage(); // Redraw the image with the updated color selection
+      }
+    }
+
+    // Add event listeners to color squares
+    colorSquares.forEach(square => {
+      square.addEventListener('click', function () {
+        const color = this.getAttribute('data-color');
+
+        if (this.classList.contains('selected')) {
+          // Deselect color if already selected
+          this.classList.remove('selected');
+          selectedColors = selectedColors.filter(c => c !== color);
+        } else if (selectedColors.length < 3) {
+          // Select the color if not already selected and limit to 3
+          this.classList.add('selected');
+          selectedColors.push(color);
+        }
+
+        updateSelectedColors();
+      });
+    });
+
+
+    // Initial drawing of the T-shirt with background
+    window.onload = drawTshirt;
+  </script>
+
+</body>
+
+</html>
