@@ -211,19 +211,10 @@
         <!-- <option value="#1982c4">Blue</option> -->
         <option value="#5d3ea0">Purple</option>
       </select>
-      <h3 for="colorPicker_temp">Step 2: Choose your line Color:</h3>
-      <p>Note: The line color will not render in live.</p>
-      <select id="colorPicker_temp">
-        <option value="#ffffff">White</option>
-        <option value="#000000">Black</option>
-        <option value="#949494">Grey</option>
-        <option value="#ffec72">Yellow</option>
-        <!-- <option value="#1982c4">Blue</option> -->
-        <option value="#5d3ea0">Purple</option>
-      </select>
     </div>
     <div id="color-selection">
-      <h3>Step 3: Pick two colors for your design:</h3>
+      <h3>Step 2: Choose one line color:</h3>
+      <p>Note: The line color will not render in live.</p>
       <div class="color-square-container">
         <div class="color-square" style="background-color: #ffffff;" data-color="#ffffff">
           <span class="checkmark">✔</span>
@@ -253,120 +244,51 @@
 
     <div id="color-selection">
 
-      <h3 for="imageUpload">Step 4: Upload Your Design:</h3>
+      <h3 for="imageUpload">Step 3: Upload Your Design:</h3>
       <input type="file" id="imageUpload" accept="image/*">
       <label for="scaleRange">Optional: Scale Image:</label>
       <input type="range" id="scaleRange" min="0.1" max="2" step="0.1" value="1">
     </div>
 
-    <div>
+
+
+    <div class="download-section">
       <button id="recenter-btn" disabled>Re-Center Image</button>
       <button id="redo-btn" class="redo-btn">Redo</button>
-    </div>
-  </div>
-  <div>
-    <p>Once your design is ready, click the button bellow to load questions and agreement about your design. </p>
-    <p>Please review the aggreement and answer all questions before clicking the submission button. </p>
-  </div>
-  <div class="download-section">
-    <button id="expand-questions-answer-btn">Step 5: Expand Terms and Questions</button>
-  </div>
-
-  <div id="additional-questions-answer" style="display: none; margin-top: 20px;">
-    <h3>Questions</h3>
-
-
-
-    <div class="question">
-      <p for="designName">(1) Name of the design?</p>
-      <input type="text" id="designName" placeholder="Enter your answer...">
+      <button id="expand-questions-answer-btn">Expand Questions</button>
     </div>
 
-    <div class="question">
-      <p for="designerName">(2) Designer's name?</p>
-      <input type="text" id="designerName" placeholder="Enter your answer...">
-    </div>
+    <div id="additional-questions-answer" style="display: none; margin-top: 20px;">
+      <h3>Additional Questions</h3>
 
-    <div class="question">
-      <p for="designerEmail">(3) Designer's email address? (We will send you an email in december if you win.)</p>
-      <input type="text" id="designerEmail" placeholder="Enter your answer...">
-    </div>
-
-    <div class="question">
-      <p for="ai">(4) Did you use any AI tool in creating your design? (The answer to this question will not influence
-        your chance of winning.)</p>
-      <select id="ai">
-        <option value="">Select an option</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-
-    <div class="question">
-      <p for="aiTool">(5) What AI tool did you use? (If you didn't use any AI tool, type in "N/A".)</p>
-      <input type="text" id="aiTool" placeholder="Enter your answer...">
-    </div>
-
-    <div id="agreement" disabled>
-      <h3>Agreement</h3>
-      <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; max-height: 200px; overflow-y: scroll;">
-        <p>This agreement outlines the terms and conditions for participation in the Knit Co-design Project, organized
-          by LSU TAM. By submitting your design, each participant agrees to adhere to the terms outlined below.</p>
-        <ul>
-          <h3>1. Eligibility and Entry Requirements</h3>
-          <li>Participants must be 18 years or older at the time of entry.</li>
-          <li>All entries must be original, and participants must be the sole creators or authorized to submit the work.
-          </li>
-          <li>Participants must be students of U.S. universities.</li>
-          <h3>2. Design Submission</h3>
-          <li>There is not limitation of the number of designs submitted by each participant.</li>
-          <h3>3. Judging Criteria</h3>
-          <li>Designs will be evaluated based on originality, aesthetic appeal, and technical skill.</li>
-          <li>A panel of judges selected by LSU TAM will review all entries.</li>
-          <li>Winners will be notified through email privded in December, 2025, and all decisions are final.</li>
-          <h3>4. Intellectual Property Rights</h3>
-          <li>All designs remain the intellectual property of the participants.</li>
-          <li>Participants indemnify the organizer against all liabilities related to intellectual property
-            infringement, misrepresentation, or any breach of this agreement.</li>
-          <li>By submitting a design, participants grant LSU TAM a non-exclusive, royalty-free license to display,
-            reproduce, and promote the work for competition-related purposes, including exhibitions, publications, and
-            digital media.</li>
-          <li>Winners agree to assign exclusive rights to LSU TAM for the winning designs, including potential
-            production, commercial use, or merchandising.</li>
-          <li>Participants retain the right to use and promote their work after the competition, subject to any
-            exclusive rights granted to LSU TAM.</li>
-          <h3>5. Confidentiality</h3>
-          <li>Participants are responsible for maintaining the confidentiality of their submissions before the
-            competition announcement.</li>
-          <h3>6. Disqualification</h3>
-          <li>Any participant found violating the competition rules or submitting plagiarized designs will be
-            disqualified.</li>
-          <li>Disqualified participants forfeit any prizes or recognition.</li>
-        </ul>
+      <div class="question">
+        <label for="feature-like">What features do you like the most?</label>
+        <input type="text" id="feature-like" placeholder="Enter your answer...">
       </div>
 
-      <div class="question" style="margin-top: 10px;">
-        <input type="checkbox" id="agree-checkbox">
-        <label for="agree-checkbox">I agree to the terms and conditions.</label>
+      <div class="question">
+        <label for="improvement">What improvements would you like to see?</label>
+        <input type="text" id="improvement" placeholder="Enter your answer...">
+      </div>
+
+      <div class="question">
+        <label for="recommendation">Would you recommend this tool?</label>
+        <select id="recommendation">
+          <option value="">Select an option</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
       </div>
     </div>
     <div>
-      <button id="download-btn" disabled>Step 6: Submit Design</button>
+      <button id="download-btn" disabled>Submit Design</button>
 
       <!-- <label for="colorReduceRange">Reduce Colors:</label>
         <input type="range" id="colorReduceRange" min="2" max="256" step="1" value="256">
         <span id="colorLevels">256 colors</span> -->
     </div>
   </div>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-  </script>
-  <script type="text/javascript">
-    (function () {
-      emailjs.init({
-        publicKey: "X0zLSUzFG4lXUTgXL",
-      });
-    })();
-  </script>
+
   <script>
 
     // Helper to convert a hex color to RGB
@@ -416,11 +338,9 @@
     const downloadBtn = document.getElementById('download-btn');
     const redoBtn = document.getElementById('redo-btn');
 
-    const designNameInput = document.getElementById('designName');
-    const designerNameInput = document.getElementById('designerName');
-    const designerEmailSelect = document.getElementById('designerEmail');
-    const aiSelect = document.getElementById('ai');
-    const aiToolInput = document.getElementById('aiTool');
+    const featureLikeInput = document.getElementById('feature-like');
+    const improvementInput = document.getElementById('improvement');
+    const recommendationSelect = document.getElementById('recommendation');
 
     downloadBtn.disabled = true; // Disable download button initially
     const recenterBtn = document.getElementById('recenter-btn');
@@ -446,31 +366,23 @@
     }
     // Function to validate if all questions are answered
     function validateQuestions() {
-      const isDesignNameFilled = designNameInput.value.trim() !== '';
-      const isDesignerNameFilled = designerNameInput.value.trim() !== '';
-      const isDesignerEmailFilled = designerEmailSelect.value.trim() !== '';
-      const isAiSelectSelected = aiSelect.value !== '';
-      const isAiToolInputFilled = aiToolInput.value.trim() !== '';
-      const isAgreementChecked = document.getElementById('agree-checkbox').checked;
+      const isFeatureLikeFilled = featureLikeInput.value.trim() !== '';
+      const isImprovementFilled = improvementInput.value.trim() !== '';
+      const isRecommendationSelected = recommendationSelect.value !== '';
 
       // Enable download button only if all questions are answered
-      downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAiSelectSelected && isAiToolInputFilled && isAgreementChecked);
+      downloadBtn.disabled = !(isFeatureLikeFilled && isImprovementFilled && isRecommendationSelected);
     }
-    // Add event listener to the agreement checkbox
-    document.getElementById('agree-checkbox').addEventListener('change', validateQuestions);
 
     // Add event listeners to question inputs to trigger validation
-    designNameInput.addEventListener('input', validateQuestions);
-    designerNameInput.addEventListener('input', validateQuestions);
-    designerEmailSelect.addEventListener('input', validateQuestions);
-    aiToolInput.addEventListener('input', validateQuestions);
-    aiSelect.addEventListener('change', validateQuestions);
+    featureLikeInput.addEventListener('input', validateQuestions);
+    improvementInput.addEventListener('input', validateQuestions);
+    recommendationSelect.addEventListener('change', validateQuestions);
 
     // Change T-shirt color based on the color picker
     colorPicker.addEventListener('change', function () {
       ctx.fillStyle = this.value;
-      drawbackground();
-      // drawTshirt();
+      drawTshirt();
       // drawImage();
       if (uploadedImage) {
         drawImage();
@@ -483,52 +395,7 @@
     sampleImage.onload = function () {
       drawTshirt();
     };
-    function drawbackground() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw the sample image as background
-      const canvasAspect = canvas.width / canvas.height;
-      const imageAspect = sampleImage.width / sampleImage.height;
-      let scaledWidth, scaledHeight;
-
-      if (imageAspect > canvasAspect) {
-        scaledWidth = canvas.width;
-        scaledHeight = scaledWidth / imageAspect;
-      } else {
-        scaledHeight = canvas.height;
-        scaledWidth = scaledHeight * imageAspect;
-      }
-
-      // Calculate positions to center the scaled image within the canvas
-      const xOffset = (canvas.width - scaledWidth) / 2;
-      const yOffset = (canvas.height - scaledHeight) / 2;
-
-
-      // Draw the T-shirt color overlay
-      ctx.fillStyle = colorPicker.value;
-
-      ctx.beginPath();
-
-      ctx.moveTo(0, 0);
-      ctx.lineTo(400, 0);
-      ctx.lineTo(400, 500);
-      ctx.lineTo(0, 500);
-      ctx.lineTo(0, 0);
-
-
-
-      ctx.closePath();
-      ctx.fill();
-      ctx.strokeStyle = '#ccc';
-      ctx.lineWidth = 5;
-      ctx.stroke();
-      // // If an image is uploaded, draw it on top
-      // if (uploadedImage) {
-      //   drawImage();
-      // }
-      // Draw the sample image centered on the canvas
-      ctx.drawImage(sampleImage, xOffset, yOffset, scaledWidth, scaledHeight);
-    }
     function drawTshirt() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -554,7 +421,6 @@
       ctx.fillStyle = colorPicker.value;
 
       ctx.beginPath();
-
       ctx.moveTo(0, 0);
       ctx.lineTo(400, 0);
       ctx.lineTo(400, 500);
@@ -628,7 +494,6 @@
       // const path = new Path2D();
 
       ctx.beginPath();
-
       ctx.moveTo(0, 0);
       ctx.lineTo(400, 0);
       ctx.lineTo(400, 500);
@@ -767,7 +632,7 @@
 
     downloadBtn.addEventListener('click', function () {
       const link = document.createElement('a');
-      link.download = 'scarf_m-design.png';
+      link.download = 'scarf-design.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -806,7 +671,7 @@
           // Deselect color if already selected
           this.classList.remove('selected');
           selectedColors = selectedColors.filter(c => c !== color);
-        } else if (selectedColors.length < 2) {
+        } else if (selectedColors.length < 1) {
           // Select the color if not already selected and limit to 3
           this.classList.add('selected');
           selectedColors.push(color);
@@ -819,47 +684,8 @@
 
     // Initial drawing of the T-shirt with background
     window.onload = drawTshirt;
-
-    // emailjs.init(''); // Replace with your EmailJS user ID
-
-    document.getElementById('download-btn').addEventListener('click', function () {
-      // Get canvas as a base64 image
-      const canvas = document.getElementById('canvas');
-      const designImage = canvas.toDataURL('image/png');
-
-      // Collect question answers
-      const designName = document.getElementById('designName').value;
-      const designerName = document.getElementById('designerName').value;
-      const designerEmail = document.getElementById('designerEmail').value;
-      const aiTool = document.getElementById('aiTool').value;
-      const ai = document.getElementById('ai').value;
-      const colorPicker_temp = document.getElementById('colorPicker_temp').value;
-
-      // Prepare the data to send
-      const templateParams = {
-        to_email: designerEmail, // Replace with the recipient's email
-        design_name: designName,
-        designer_name: designerName,
-        ai: ai,
-        ai_tool: aiTool,
-        design_image: designImage, // Pass the base64 image
-        line_color: colorPicker_temp
-      };
-
-      // Send email through EmailJS
-      emailjs.send('service_34c4w8b', 'template_f9ly62r', templateParams, {})
-        .then(function (response) {
-          alert('Design submitted successfully!');
-          console.log('Email sent!', response.status, response.text);
-        }, function (error) {
-          alert('Failed to submit design. Please try again.');
-          console.error('Failed to send email:', error);
-        });
-    });
-
-
-
   </script>
+
 </body>
 
 </html>
