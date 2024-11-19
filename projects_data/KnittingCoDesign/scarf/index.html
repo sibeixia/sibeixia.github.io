@@ -154,7 +154,9 @@
       width: 50px;
       height: 50px;
       margin: 0;
+      /* border: 2px solid transparent; */
       border: 2px solid transparent;
+      border-color: #000;
       border-radius: 5px;
       cursor: pointer;
       position: relative;
@@ -203,29 +205,33 @@
       <h3 for="colorPicker">Step 1: Choose Background Color:</h3>
       <select id="colorPicker">
         <option value="#ffffff">White</option>
-        <option value="#ff595e">Red</option>
-        <option value="#ffca3a">Yellow</option>
-        <option value="#8ac926">Green</option>
-        <option value="#1982c4">Blue</option>
-        <option value="#6a4c93">Purple</option>
+        <option value="#000000">Black</option>
+        <option value="#949494">Grey</option>
+        <option value="#ffec72">Yellow</option>
+        <!-- <option value="#1982c4">Blue</option> -->
+        <option value="#5d3ea0">Purple</option>
       </select>
     </div>
     <div id="color-selection">
-      <h3>Step 2: Pick three colors for your design:</h3>
+      <h3>Step 2: Choose one line color:</h3>
+      <p>Note: The line color will not render in live.</p>
       <div class="color-square-container">
-        <div class="color-square" style="background-color: #ff595e;" data-color="#ff595e">
+        <div class="color-square" style="background-color: #ffffff;" data-color="#ffffff">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #ffca3a;" data-color="#ffca3a">
+        <div class="color-square" style="background-color: #000000;" data-color="#000000">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #8ac926;" data-color="#8ac926">
+        <div class="color-square" style="background-color: #949494;" data-color="#949494">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #1982c4;" data-color="#1982c4">
+        <div class="color-square" style="background-color: #ffec72;" data-color="#ffec72">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #6a4c93;" data-color="#6a4c93">
+        <!-- <div class="color-square" style="background-color: #1982c4;" data-color="#1982c4">
+          <span class="checkmark">✔</span>
+        </div> -->
+        <div class="color-square" style="background-color: #5d3ea0;" data-color="#5d3ea0">
           <span class="checkmark">✔</span>
         </div>
       </div>
@@ -420,7 +426,7 @@
       ctx.lineTo(400, 500);
       ctx.lineTo(0, 500);
       ctx.lineTo(0, 0);
-    
+
       // ctx.moveTo(40, 210);
       // ctx.lineTo(355, 210);
       // ctx.lineTo(355, 410);
@@ -493,8 +499,8 @@
       ctx.lineTo(400, 500);
       ctx.lineTo(0, 500);
       ctx.lineTo(0, 0);
-    
-            // ctx.moveTo(40, 210);
+
+      // ctx.moveTo(40, 210);
       // ctx.lineTo(355, 210);
       // ctx.lineTo(355, 410);
       // ctx.lineTo(40, 410);
@@ -665,7 +671,7 @@
           // Deselect color if already selected
           this.classList.remove('selected');
           selectedColors = selectedColors.filter(c => c !== color);
-        } else if (selectedColors.length < 3) {
+        } else if (selectedColors.length < 1) {
           // Select the color if not already selected and limit to 3
           this.classList.add('selected');
           selectedColors.push(color);
