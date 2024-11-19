@@ -81,6 +81,41 @@
       border-radius: 5px;
       border: 1px solid #ddd;
     }
+    input[type="text"] {
+      width: 50%;
+      /* Make the input box wider */
+      padding: 5px;
+      /* Add some padding for better usability */
+      font-size: 12px;
+      /* Increase the font size */
+      border: 1px solid #ccc;
+      /* Keep the border consistent */
+      border-radius: 5px;
+      /* Ensure rounded corners */
+      box-sizing: border-box;
+      /* Prevent overflow issues */
+    }
+
+    textarea {
+      width: 90%;
+      /* Make the textarea wider */
+      padding: 5px;
+      /* Add padding for usability */
+      font-size: 12px;
+      /* Increase the font size */
+      border: 1px solid #ccc;
+      /* Keep the border style consistent */
+      border-radius: 5px;
+      /* Rounded corners */
+      box-sizing: border-box;
+      /* Prevent overflow issues */
+      resize: vertical;
+      /* Allow users to resize vertically if needed */
+      line-height: 1.5;
+      /* Improve readability */
+      min-height: 50px;
+      /* Ensure a decent default height */
+    }
 
     button {
       background-color: #28a745;
@@ -193,6 +228,8 @@
 
   <div class="container">
     <h1>Customize Your Scarf</h1>
+    <p>Follow the steps and answer all the survey questions before the submission button will be active.</p>
+
     <div id="display">
       <div class="sample">
         <img src="sample.jpeg" alt="Sample Image" width="400" height="500">
@@ -283,19 +320,22 @@
       <p for="designName">(1) Name of the design?</p>
       <input type="text" id="designName" placeholder="Enter your answer...">
     </div>
-
     <div class="question">
-      <p for="designerName">(2) Designer's name?</p>
+      <p for="inspiration">(2) What was your inspiration?</p>
+      <textarea id="inspiration" placeholder="Enter your answer..."></textarea>
+    </div>
+    <div class="question">
+      <p for="designerName">(3) Designer's name?</p>
       <input type="text" id="designerName" placeholder="Enter your answer...">
     </div>
 
     <div class="question">
-      <p for="designerEmail">(3) Designer's email address? (We will send you an email in december if you win.)</p>
+      <p for="designerEmail">(4) Designer's email address? (We will send you an email in december if you win.)</p>
       <input type="text" id="designerEmail" placeholder="Enter your answer...">
     </div>
 
     <div class="question">
-      <p for="ai">(4) Did you use any AI tool in creating your design? (The answer to this question will not influence
+      <p for="ai">(5) Did you use any AI tool in creating your design? (The answer to this question will not influence
         your chance of winning.)</p>
       <select id="ai">
         <option value="">Select an option</option>
@@ -305,10 +345,13 @@
     </div>
 
     <div class="question">
-      <p for="aiTool">(5) What AI tool did you use? (If you didn't use any AI tool, type in "N/A".)</p>
+      <p for="aiTool">(6) What AI tool did you use? (If you didn't use any AI tool, type in "N/A".)</p>
       <input type="text" id="aiTool" placeholder="Enter your answer...">
     </div>
-
+    <div class="question">
+      <p for="feedback">(7) Any feedback to the Knit Co-design Team?</p>
+      <textarea id="feedback" placeholder="Enter your answer..."></textarea>
+    </div>
     <div id="agreement" disabled>
       <h3>Agreement</h3>
       <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; max-height: 200px; overflow-y: scroll;">
@@ -321,11 +364,12 @@
           </li>
           <li>Participants must be students of U.S. universities.</li>
           <h3>2. Design Submission</h3>
-          <li>There is not limitation of the number of designs submitted by each participant.</li>
+          <li>A participant can submit <strong>up to three</strong> designs.</li>
+          <li>Designs are accepted from <strong>November 22nd 8 am through December 1st 5 pm CST, 2024</strong>.</li>
           <h3>3. Judging Criteria</h3>
           <li>Designs will be evaluated based on originality, aesthetic appeal, and technical skill.</li>
           <li>A panel of judges selected by LSU TAM will review all entries.</li>
-          <li>Winners will be notified through email privded in December, 2025, and all decisions are final.</li>
+          <li>Winners will be notified through email privded in December, 2024, and all decisions are final.</li>
           <h3>4. Intellectual Property Rights</h3>
           <li>All designs remain the intellectual property of the participants.</li>
           <li>Participants indemnify the organizer against all liabilities related to intellectual property
@@ -454,9 +498,10 @@
       const isAiSelectSelected = aiSelect.value !== '';
       const isAiToolInputFilled = aiToolInput.value.trim() !== '';
       const isAgreementChecked = document.getElementById('agree-checkbox').checked;
+      const areColorsSelected = selectedColors.length > 0; // Ensure at least one color is selected
 
       // Enable download button only if all questions are answered
-      downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAiSelectSelected && isAiToolInputFilled && isAgreementChecked);
+      downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAiSelectSelected && isAiToolInputFilled && isAgreementChecked && areColorsSelected);
     }
     // Add event listener to the agreement checkbox
     document.getElementById('agree-checkbox').addEventListener('change', validateQuestions);
@@ -815,6 +860,8 @@
         }
 
         updateSelectedColors();
+        validateQuestions(); // Revalidate download button after color changes
+
       });
     });
 
@@ -825,9 +872,25 @@
     // emailjs.init(''); // Replace with your EmailJS user ID
 
     document.getElementById('download-btn').addEventListener('click', function () {
-      // Get canvas as a base64 image
-      const canvas = document.getElementById('canvas');
-      const designImage = canvas.toDataURL('image/png');
+      // Temporary canvas for high-resolution image
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+
+      // Set higher resolution
+      const scale = 10; // Adjust scale for desired resolution (e.g., 3 for 3x)
+      tempCanvas.width = canvas.width * scale;
+      tempCanvas.height = canvas.height * scale;
+
+      // Scale and redraw everything on the temporary canvas
+      tempCtx.scale(scale, scale);
+      tempCtx.drawImage(canvas, 0, 0);
+
+      // Get the higher-resolution image data
+      const designImage = tempCanvas.toDataURL('image/png');
+
+      // // Get canvas as a base64 image
+      // const canvas = document.getElementById('canvas');
+      // const designImage = canvas.toDataURL('image/png');
 
       // Collect question answers
       const designName = document.getElementById('designName').value;
@@ -836,7 +899,8 @@
       const aiTool = document.getElementById('aiTool').value;
       const ai = document.getElementById('ai').value;
       const colorPicker_temp = document.getElementById('colorPicker_temp').value;
-
+      const inspiration = document.getElementById('inspiration').value;
+      const feedback = document.getElementById('feedback').value;
       // Prepare the data to send
       const templateParams = {
         to_email: designerEmail, // Replace with the recipient's email
@@ -845,7 +909,9 @@
         ai: ai,
         ai_tool: aiTool,
         design_image: designImage, // Pass the base64 image
-        line_color: colorPicker_temp
+        line_color: colorPicker_temp,
+        inspiration: inspiration,
+        feedback: feedback
       };
 
       // Send email through EmailJS
