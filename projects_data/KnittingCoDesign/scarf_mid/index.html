@@ -891,7 +891,7 @@
           // Deselect color if already selected
           this.classList.remove('selected');
           selectedColors = selectedColors.filter(c => c !== color);
-        } else if (selectedColors.length < 2) {
+        } else if (selectedColors.length < 3) {
           // Select the color if not already selected and limit to 3
           this.classList.add('selected');
           selectedColors.push(color);
