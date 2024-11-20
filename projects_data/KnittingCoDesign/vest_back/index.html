@@ -228,7 +228,7 @@
 <body>
 
   <div class="container">
-    <h1>Customize Your Vest</h1>
+    <h1>Customize Your Vest Back</h1>
     <p>Follow the steps and answer all the survey questions before the submission button will be active.</p>
     <div id="display">
       <div class="sample">
@@ -241,10 +241,11 @@
     <div>
       <h3 for="colorPicker">Step 1: Choose Background Color:</h3>
       <select id="colorPicker">
-        <option value="#ffffff">White</option>
-        <option value="#000000">Black</option>
-        <option value="#780000">Red</option>
-        <option value="#00027f">Navy</option>
+        <option value="#ffffff" selected>None</option> <!-- Default to none selected -->
+        <option value="#3147c6">Blue</option>
+        <option value="#17543d">Green</option>
+        <option value="#ac3a82">Pink</option>
+        <option value="#ffe055">Yellow</option>
         <!-- <option value="#1982c4">Blue</option> -->
         <option value="#5d3ea0">Purple</option>
       </select>
@@ -252,16 +253,16 @@
     <div id="color-selection">
       <h3>Step 2: Pick three colors for your design:</h3>
       <div class="color-square-container">
-        <div class="color-square" style="background-color: #ffffff;" data-color="#ffffff">
+        <div class="color-square" style="background-color: #3147c6;" data-color="#3147c6">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #000000;" data-color="#000000">
+        <div class="color-square" style="background-color: #17543d;" data-color="#17543d">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #780000;" data-color="#780000">
+        <div class="color-square" style="background-color: #ac3a82;" data-color="#ac3a82">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #00027f;" data-color="#00027f">
+        <div class="color-square" style="background-color: #ffe055;" data-color="#ffe055">
           <span class="checkmark">✔</span>
         </div>
         <!-- <div class="color-square" style="background-color: #1982c4;" data-color="#1982c4">
@@ -520,7 +521,7 @@
 
     // Load the sample image as background
     const sampleImage = new Image();
-    sampleImage.src = 'template.PNG';
+    sampleImage.src = 'template.png';
     sampleImage.onload = function () {
       drawTshirt();
     };
@@ -602,11 +603,15 @@
       // ctx.lineTo(0, 500);
       // ctx.lineTo(0, 0);
 
-      ctx.moveTo(40, 210);
-      ctx.lineTo(355, 210);
-      ctx.lineTo(355, 410);
-      ctx.lineTo(40, 410);
-      ctx.lineTo(40, 210);
+      ctx.moveTo(71, 110);
+      ctx.lineTo(327, 110);
+      ctx.lineTo(327, 180);
+      ctx.lineTo(365, 240);
+      ctx.lineTo(355, 420);
+      ctx.lineTo(40, 420);
+      ctx.lineTo(35, 240);
+      ctx.lineTo(71, 180);
+      ctx.lineTo(71, 110);
 
       ctx.closePath();
       ctx.fill();
@@ -676,11 +681,15 @@
       // ctx.lineTo(0, 500);
       // ctx.lineTo(0, 0);
 
-      ctx.moveTo(40, 210);
-      ctx.lineTo(355, 210);
-      ctx.lineTo(355, 410);
-      ctx.lineTo(40, 410);
-      ctx.lineTo(40, 210);
+      ctx.moveTo(71, 110);
+      ctx.lineTo(327, 110);
+      ctx.lineTo(327, 180);
+      ctx.lineTo(365, 240);
+      ctx.lineTo(355, 420);
+      ctx.lineTo(40, 420);
+      ctx.lineTo(35, 240);
+      ctx.lineTo(71, 180);
+      ctx.lineTo(71, 110);
 
 
       // ctx.moveTo(120, 100);
@@ -808,7 +817,7 @@
 
     downloadBtn.addEventListener('click', function () {
       const link = document.createElement('a');
-      link.download = 'Vest-design.png';
+      link.download = 'Vest_back-design.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -907,7 +916,7 @@
       };
 
       // Send email through EmailJS
-      emailjs.send('service_34c4w8b', 'template_4ral3wa', templateParams, {})
+      emailjs.send('service_34c4w8b', 'template_aa6xo3u', templateParams, {})
         .then(function (response) {
           alert('Design submitted successfully! Check your inbox for a copy of your submission.');
           console.log('Email sent!', response.status, response.text);

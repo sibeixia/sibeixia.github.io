@@ -228,12 +228,11 @@
 <body>
 
   <div class="container">
-    <h1>Customize Your TAM Scarf</h1>
+    <h1>Customize Your Sweater Front</h1>
     <p>Follow the steps and answer all the survey questions before the submission button will be active.</p>
-    <p>LSU related brand logos, such as "LSU", "Geaux", or "LSU Tiger", cannot be used.</p>
     <div id="display">
       <div class="sample">
-        <img src="sample.JPG" alt="Sample Image" width="400" height="500">
+        <img src="sample.jpg" alt="Sample Image" width="400" height="500">
       </div>
       <div class="tshirt" id="tshirt-preview">
         <canvas id="canvas" width="400" height="500"></canvas>
@@ -243,22 +242,11 @@
       <h3 for="colorPicker">Step 1: Choose Background Color:</h3>
       <select id="colorPicker">
         <option value="#ffffff" selected>None</option> <!-- Default to none selected -->
-
         <option value="#ffffff">White</option>
         <option value="#000000">Black</option>
-        <option value="#780000">Red</option>
-        <option value="#00027f">Navy</option>
-        <option value="#9bfb6a">Lime</option>
+        <option value="#d9d9dc">Grey</option>
 
-        <!-- <option value="#1982c4">Blue</option> -->
-        <option value="#e3ded1">Warm Grey</option>
-        <option value="#d9d9dc">Cold Grey</option>
-        <option value="#fbf1b1">Light Yellow</option>
-        <option value="#ffe055">Yellow</option>
-        <option value="#847a3a">Brown</option>
-        <option value="#520564">Dark Purple</option>
-        <option value="#c4a6cc">Light Purple</option>
-        <option value="#5d3ea0">Purple</option>
+        <option value="#17543d">Dark Green</option>
 
       </select>
     </div>
@@ -271,43 +259,15 @@
         <div class="color-square" style="background-color: #000000;" data-color="#000000">
           <span class="checkmark">✔</span>
         </div>
+        <div class="color-square" style="background-color: #3147c6;" data-color="#3147c6">
+          <span class="checkmark">✔</span>
+        </div>
+        <div class="color-square" style="background-color: #17543d;" data-color="#17543d">
+          <span class="checkmark">✔</span>
+        </div>
         <div class="color-square" style="background-color: #780000;" data-color="#780000">
           <span class="checkmark">✔</span>
         </div>
-        <div class="color-square" style="background-color: #00027f;" data-color="#00027f">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #9bfb6a;" data-color="#9bfb6a">
-          <span class="checkmark">✔</span>
-        </div>
-        <!-- <div class="color-square" style="background-color: #1982c4;" data-color="#1982c4">
-          <span class="checkmark">✔</span>
-        </div> -->
-        <div class="color-square" style="background-color: #e3ded1;" data-color="#e3ded1">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #d9d9dc;" data-color="#d9d9dc">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #fbf1b1;" data-color="#fbf1b1">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #ffe055;" data-color="#ffe055">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #847a3a;" data-color="#847a3a">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #520564;" data-color="#520564">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #c4a6cc;" data-color="#c4a6cc">
-          <span class="checkmark">✔</span>
-        </div>
-        <div class="color-square" style="background-color: #5d3ea0;" data-color="#5d3ea0">
-          <span class="checkmark">✔</span>
-        </div>
-
       </div>
       <p id="selected-colors">Selected: None</p>
     </div>
@@ -558,7 +518,7 @@
 
     // Load the sample image as background
     const sampleImage = new Image();
-    sampleImage.src = 'template.PNG';
+    sampleImage.src = 'template.png';
     sampleImage.onload = function () {
       drawTshirt();
     };
@@ -634,17 +594,18 @@
 
       ctx.beginPath();
 
-      ctx.moveTo(0, 0);
-      ctx.lineTo(400, 0);
-      ctx.lineTo(400, 500);
-      ctx.lineTo(0, 500);
-      ctx.lineTo(0, 0);
+      // ctx.moveTo(0, 0);
+      // ctx.lineTo(400, 0);
+      // ctx.lineTo(400, 500);
+      // ctx.lineTo(0, 500);
+      // ctx.lineTo(0, 0);
 
-      // ctx.moveTo(40, 210);
-      // ctx.lineTo(355, 210);
-      // ctx.lineTo(355, 410);
-      // ctx.lineTo(40, 410);
-      // ctx.lineTo(40, 210);
+
+      ctx.moveTo(42, 195);
+      ctx.lineTo(360, 195);
+      ctx.lineTo(360, 410);
+      ctx.lineTo(42, 410);
+      ctx.lineTo(42, 195);
 
       ctx.closePath();
       ctx.fill();
@@ -708,17 +669,17 @@
 
       ctx.beginPath();
 
-      ctx.moveTo(0, 0);
-      ctx.lineTo(400, 0);
-      ctx.lineTo(400, 500);
-      ctx.lineTo(0, 500);
-      ctx.lineTo(0, 0);
+      // ctx.moveTo(0, 0);
+      // ctx.lineTo(400, 0);
+      // ctx.lineTo(400, 500);
+      // ctx.lineTo(0, 500);
+      // ctx.lineTo(0, 0);
 
-      // ctx.moveTo(40, 210);
-      // ctx.lineTo(355, 210);
-      // ctx.lineTo(355, 410);
-      // ctx.lineTo(40, 410);
-      // ctx.lineTo(40, 210);
+      ctx.moveTo(42, 195);
+      ctx.lineTo(360, 195);
+      ctx.lineTo(360, 410);
+      ctx.lineTo(42, 410);
+      ctx.lineTo(42, 195);
 
 
       // ctx.moveTo(120, 100);
@@ -846,7 +807,7 @@
 
     downloadBtn.addEventListener('click', function () {
       const link = document.createElement('a');
-      link.download = 'Scarf_assignment5-design.png';
+      link.download = 'sweater_front-design.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
@@ -945,7 +906,7 @@
       };
 
       // Send email through EmailJS
-      emailjs.send('service_34c4w8b', 'template_syngn48', templateParams, {})
+      emailjs.send('service_34c4w8b', 'template_k7msr2m', templateParams, {})
         .then(function (response) {
           alert('Design submitted successfully! Check your inbox for a copy of your submission.');
           console.log('Email sent!', response.status, response.text);
