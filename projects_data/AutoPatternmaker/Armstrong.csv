@@ -16,8 +16,8 @@
 11,Size_6,Side_Length,8.125,1
 12,Size_6,Back_Neck,2.625,1
 13,Size_6,Shoulder_Length,5.125,1
-14,Size_6,Across_Shoulder_Front,7.5,0
-14,Size_6,Across_Shoulder_Back,7.75,0
+14,Size_6,Across_Shoulder_Front,7.5,1
+14,Size_6,Across_Shoulder_Back,7.75,1
 15,Size_6,Across_Chest,6.5,1
 16,Size_6,Across_Back,6.75,1
 17,Size_6,Bust_Arc,9.5,1
