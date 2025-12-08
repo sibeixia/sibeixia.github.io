@@ -518,15 +518,17 @@
       const isDesignNameFilled = designNameInput.value.trim() !== '';
       const isDesignerNameFilled = designerNameInput.value.trim() !== '';
       const isDesignerEmailFilled = designerEmailSelect.value.trim() !== '';
-      const isAiSelectSelected = aiSelect.value !== '';
-      const isAiToolInputFilled = aiToolInput.value.trim() !== '';
+      // const isAiSelectSelected = aiSelect.value !== '';
+      // const isAiToolInputFilled = aiToolInput.value.trim() !== '';
       const isAgreementChecked = document.getElementById('agree-checkbox').checked;
       const areColorsSelected = selectedColors.length > 0; // Ensure at least one color is selected
 
       // const iscolorSquanresSelected = document.getElementById('selected-colors').textContent.includes('#') ;
       // console.log(document.getElementById('selected-colors').value)
       // Enable download button only if all questions are answered
-      downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAiSelectSelected && isAiToolInputFilled && isAgreementChecked && areColorsSelected);
+            // downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAiSelectSelected && isAiToolInputFilled && isAgreementChecked && areColorsSelected);
+
+      downloadBtn.disabled = !(isDesignNameFilled && isDesignerNameFilled && isDesignerEmailFilled && isAgreementChecked && areColorsSelected);
     }
 
 
@@ -539,8 +541,8 @@
     designNameInput.addEventListener('input', validateQuestions);
     designerNameInput.addEventListener('input', validateQuestions);
     designerEmailSelect.addEventListener('input', validateQuestions);
-    aiToolInput.addEventListener('input', validateQuestions);
-    aiSelect.addEventListener('change', validateQuestions);
+    // aiToolInput.addEventListener('input', validateQuestions);
+    // aiSelect.addEventListener('change', validateQuestions);
 
     // Change T-shirt color based on the color picker
     colorPicker.addEventListener('change', function () {
