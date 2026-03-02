@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin - 数字产品护照</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-body">
+    <div class="container page-container">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">Back</a>
+            <h1 class="page-title">Digital Twin</h1>
+        </header>
+
+        <!-- Video Player -->
+        <div class="video-section">
+            <div class="video-player">
+                <video id="productVideo" class="product-video" controls poster="images/shoe-video-poster.jpg">
+                    <source src="videos/shoe-3d.mp4" type="video/mp4">
+                    <source src="videos/shoe-3d.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-placeholder" style="display: none;">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <p>3D Product Video</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Twin Information -->
+        <section class="info-section">
+            <h2 class="section-title">Digital Twin Information</h2>
+            <div class="feature-boxes">
+                <div class="feature-box">360° Digital Display</div>
+                <div class="feature-box">Synchronized with Physical Product</div>
+                <div class="feature-box">NFT Platform Trading Support</div>
+            </div>
+        </section>
+
+        <!-- Share on Social Media -->
+        <section class="info-section">
+            <h2 class="section-title">Share on Social Media</h2>
+            <div class="social-buttons">
+                <button class="social-btn instagram">
+                    <span>📷</span>
+                    <span>Instagram</span>
+                </button>
+                <button class="social-btn facebook">
+                    <span>f</span>
+                    <span>Facebook</span>
+                </button>
+                <button class="social-btn tiktok">
+                    <span>♪</span>
+                    <span>TikTok</span>
+                </button>
+                <button class="social-btn twitter">
+                    <span>𝕏</span>
+                    <span>X</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- NFT Trading Information -->
+        <section class="info-section">
+            <h2 class="section-title">NFT Trading Information</h2>
+            <div class="nft-info">
+                <p>Digital Twin version available for trading on NFT platform</p>
+                <p class="nft-price">Price synchronized with physical product: $1100</p>
+                <button class="nft-button">View NFT Platform</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+

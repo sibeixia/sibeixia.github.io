@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Info - Digital Product Passport</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <a href="index.html" class="back-button">Back</a>
+            <h1 class="page-title">Product Info</h1>
+        </div>
+
+        <!-- Product Images -->
+        <div class="product-images">
+            <div class="main-product-image">
+                <img id="main-watch-image" src="assets/images/配饰手表 黑正面.png" alt="HERITAGE LUXURY WATCH" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
+            </div>
+            <div class="thumbnail-images">
+                <!-- Black Watch Images -->
+                <div class="thumbnail active" data-image="assets/images/配饰手表 黑正面.png">
+                    <img src="assets/images/配饰手表 黑正面.png" alt="Black Watch Front">
+                </div>
+                <div class="thumbnail" data-image="assets/images/配饰手表 黑背面.png">
+                    <img src="assets/images/配饰手表 黑背面.png" alt="Black Watch Back">
+                </div>
+                <!-- Brown Watch Images -->
+                <div class="thumbnail" data-image="assets/images/配饰手表 棕正面.png">
+                    <img src="assets/images/配饰手表 棕正面.png" alt="Brown Watch Front">
+                </div>
+                <div class="thumbnail" data-image="assets/images/配饰手表 棕背面.png">
+                    <img src="assets/images/配饰手表 棕背面.png" alt="Brown Watch Back">
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            // Add click handlers to thumbnails
+            document.addEventListener('DOMContentLoaded', function() {
+                const mainImage = document.getElementById('main-watch-image');
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                
+                thumbnails.forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        const imageSrc = this.getAttribute('data-image');
+                        if (imageSrc) {
+                            mainImage.src = imageSrc;
+                            // Update active thumbnail
+                            thumbnails.forEach(t => t.classList.remove('active'));
+                            this.classList.add('active');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <!-- Product Details -->
+        <div class="content-card">
+            <h1 class="product-title" style="font-size: 28px; text-align: left; margin-bottom: 8px;">HERITAGE LUXURY WATCH</h1>
+            <p class="product-id" style="text-align: left; margin-bottom: 20px;">Model: WH2024001</p>
+
+            <h2 class="section-title">Overview</h2>
+            <div class="info-value">
+                <p>This watch features a minimalist round case design with a refined dial layout and Roman numeral hour markers. The overall aesthetic emphasizes timeless elegance and balanced proportions, suitable for both formal and everyday wear.</p>
+            </div>
+
+            <!-- Price and Weight -->
+            <div class="price-weight">
+                <div class="price-weight-item">
+                    <div class="price-weight-label">Price</div>
+                    <div class="price-weight-value">$3,800</div>
+                </div>
+                <div class="price-weight-item">
+                    <div class="price-weight-label">Weight</div>
+                    <div class="price-weight-value">55-65g</div>
+                </div>
+            </div>
+
+            <!-- Available Colors -->
+            <h2 class="section-title">Available Colors</h2>
+            <div class="color-swatches">
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #1a1a1a;"></div>
+                    <span class="color-label">Black</span>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-circle" style="background-color: #8B7355;"></div>
+                    <span class="color-label">Brown</span>
+                </div>
+            </div>
+
+            <!-- Select Size -->
+            <h2 class="section-title" style="display: flex; align-items: center; justify-content: space-between;">
+                <span>Select Size</span>
+                <a href="#" class="size-guide-link">Size Guide</a>
+            </h2>
+            <div class="size-buttons">
+                <button class="size-button active">38mm</button>
+                <button class="size-button">40mm</button>
+            </div>
+
+            <!-- Specifications -->
+            <div class="specifications">
+                <h2 class="section-title">Technical Specifications</h2>
+                <div class="spec-category">
+                    <div class="spec-category-title">Case</div>
+                    <div class="spec-item">Material: Stainless Steel</div>
+                    <div class="spec-item">Case Shape: Round</div>
+                    <div class="spec-item">Case Finish: Polished</div>
+                    <div class="spec-item">Crown: Stainless steel crown</div>
+                </div>
+                <div class="spec-category">
+                    <div class="spec-category-title">Dial</div>
+                    <div class="spec-item">Dial Color: Black</div>
+                    <div class="spec-item">Hour Markers: Roman numerals</div>
+                    <div class="spec-item">Hands: Silver-toned hour and minute hands</div>
+                    <div class="spec-item">Display: Analog</div>
+                </div>
+                <div class="spec-category">
+                    <div class="spec-category-title">Movement</div>
+                    <div class="spec-item">Movement Type: Quartz</div>
+                    <div class="spec-item">Functions: Hours and minutes</div>
+                </div>
+                <div class="spec-category">
+                    <div class="spec-category-title">Strap & Buckle</div>
+                    <div class="spec-item">Strap Material: Cowhide Leather</div>
+                    <div class="spec-item">Strap Color: Brown</div>
+                    <div class="spec-item">Stitching: Tone-on-tone stitching</div>
+                    <div class="spec-item">Strap Type: Adjustable leather strap</div>
+                    <div class="spec-item">Buckle Material: Stainless Steel</div>
+                    <div class="spec-item">Buckle Type: Pin buckle</div>
+                </div>
+                <div class="spec-category">
+                    <div class="spec-category-title">Dimensions & Weight</div>
+                    <div class="spec-item">Case Diameter: Approx. 38–40 mm</div>
+                    <div class="spec-item">Weight: Approx. 55–65 g (including strap)</div>
+                    <div class="spec-item">Gender: Unisex</div>
+                </div>
+            </div>
+
+            <!-- Origin & Craftsmanship -->
+            <div class="specifications" style="margin-top: 24px;">
+                <h2 class="section-title">Origin & Craftsmanship</h2>
+                <div class="spec-category">
+                    <div class="spec-item">Strap Material: Cowhide leather</div>
+                    <div class="spec-item">Assembly: Made in Switzerland</div>
+                    <div class="spec-item">Craft Focus: Emphasis on material quality, durability, and long-term wear</div>
+                </div>
+            </div>
+
+            <!-- Sustainability Notes -->
+            <div class="specifications" style="margin-top: 24px;">
+                <h2 class="section-title">Sustainability Notes</h2>
+                <div class="spec-category">
+                    <div class="spec-item">Cowhide leather sourced as a by-product of the food industry</div>
+                    <div class="spec-item">Durable materials designed to extend product lifespan</div>
+                    <div class="spec-item">Replaceable leather strap supports repair and reuse</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

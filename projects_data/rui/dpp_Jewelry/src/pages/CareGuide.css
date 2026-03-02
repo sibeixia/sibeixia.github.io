@@ -1,0 +1,141 @@
+.care-guide-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.back-button {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #000000;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e8e8e8;
+}
+
+.page-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.care-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.care-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.care-item:last-child {
+  border-bottom: none;
+}
+
+.program-intro {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.program-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.program-list li {
+  font-size: 16px;
+  color: #000000;
+  padding-left: 24px;
+  position: relative;
+}
+
+.program-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.program-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+.longevity-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.longevity-list li {
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.6;
+  padding-left: 24px;
+  position: relative;
+}
+
+.longevity-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-size: 20px;
+  line-height: 1;
+}
+

@@ -1,0 +1,1090 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #f5f5f5;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --accent-color: #000000;
+    --hover-color: #333333;
+    --background: #ffffff;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.main-content .container {
+    padding: 0;
+}
+
+/* 页面切换 */
+.page {
+    display: none;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* 主页样式 */
+.product-image-section {
+    padding: 50px 0 40px 0;
+    background: var(--background);
+}
+
+.product-image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--background);
+    overflow: hidden;
+}
+
+.product-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.product-header {
+    padding: 30px 0 40px 0;
+    border-bottom: none;
+}
+
+.product-title-section {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.product-subtitle {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: none;
+    line-height: 1.5;
+}
+
+.product-id {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    font-family: 'Courier New', monospace;
+}
+
+/* 导航按钮 */
+.main-content {
+    padding: 0;
+    margin-top: 0;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 0 40px 40px 40px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-button {
+    width: 100%;
+    padding: 18px 32px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 0;
+    text-align: left;
+    cursor: pointer;
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+    text-transform: capitalize;
+    letter-spacing: 0.03em;
+    position: relative;
+    margin: 0;
+    font-family: inherit;
+    box-shadow: none;
+}
+
+.nav-button:hover {
+    background-color: #e8e8e8;
+}
+
+.nav-button:active {
+    background-color: #d8d8d8;
+}
+
+/* 详情页样式 */
+.detail-page {
+    background: var(--background);
+}
+
+.detail-header {
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: var(--border-color);
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.detail-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+}
+
+.detail-content {
+    padding: 40px 0;
+}
+
+/* Digital Twin 详情页 */
+.video-section {
+    margin-bottom: 40px;
+}
+
+.video-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-video,
+.digital-twin-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.info-cards-section,
+.social-share-section,
+.nft-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-card {
+    padding: 20px;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.social-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.social-btn {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 0.3s;
+}
+
+.social-btn:hover {
+    opacity: 0.9;
+}
+
+.social-btn.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-btn.facebook {
+    background: #1877f2;
+}
+
+.social-btn.tiktok {
+    background: #000000;
+}
+
+.social-btn.twitter {
+    background: #1da1f2;
+}
+
+.social-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nft-info {
+    background: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.nft-info p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.nft-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.nft-button {
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nft-button:hover {
+    background: var(--hover-color);
+}
+
+/* Authentication 详情页 */
+.authentication-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.auth-verification-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 0;
+}
+
+.verified-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.verified-icon-circle svg {
+    width: 48px;
+    height: 48px;
+}
+
+.verified-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.verified-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.info-card-section {
+    margin-bottom: 30px;
+}
+
+.info-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    text-transform: capitalize;
+}
+
+.info-card {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.info-card-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    gap: 15px;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 700;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    min-width: 150px;
+}
+
+.info-value {
+    font-weight: 400;
+    color: var(--text-primary);
+    text-align: right;
+    flex: 1;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+.info-value-block {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.info-subsection {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.info-subsection:last-child {
+    margin-bottom: 0;
+}
+
+.info-subtitle {
+    display: block;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.info-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: left;
+    max-width: 100%;
+}
+
+.verified-status {
+    color: #28a745;
+}
+
+.transfer-section {
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.transfer-button {
+    width: 100%;
+    padding: 18px 30px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.transfer-button:hover {
+    background: #218838;
+}
+
+/* Product Info 详情页 */
+.product-info-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.product-image-section-info {
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-main-image-info {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumbnail-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail-item.active {
+    border-color: var(--primary-color);
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-name-section {
+    margin-bottom: 30px;
+}
+
+.product-name-info {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.product-model-info {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.info-section-card {
+    background: var(--secondary-color);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.section-title-info {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.overview-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.price-weight-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.price-weight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.price-weight-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.price-weight-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.color-swatches {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.color-swatch:hover {
+    background: var(--secondary-color);
+}
+
+.color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+}
+
+.color-name {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.specifications-content {
+    margin-top: 20px;
+}
+
+.spec-subsection {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.spec-subsection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.spec-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.spec-group {
+    margin-bottom: 20px;
+}
+
+.spec-group strong {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.spec-group ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.spec-group li {
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.spec-group p {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Supply Chain 详情页 */
+.supply-chain-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.supply-chain-info-list,
+.carbon-emission-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Sustainability 详情页 */
+.sustainability-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sustainability-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.certifications-display {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.certification-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.certification-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.certification-icon.iso {
+    background: #1877f2;
+}
+
+.certification-icon.eco {
+    background: #28a745;
+}
+
+.iso-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.3;
+}
+
+.iso-badge span {
+    display: block;
+}
+
+.eco-badge {
+    font-size: 3rem;
+    color: white;
+}
+
+.certification-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.commitment-content {
+    margin-top: 15px;
+}
+
+.commitment-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.commitment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.commitment-list li {
+    padding: 10px 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+}
+
+.commitment-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.philosophy-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Care Guide 详情页 */
+.care-guide-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.care-instructions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.care-instruction-item {
+    padding: 15px 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.care-instruction-item.has-border {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.recycling-program-content {
+    margin-top: 15px;
+}
+
+.recycling-intro {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.recycling-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recycling-benefits li {
+    padding: 8px 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+}
+
+.recycling-benefits li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* 页脚 */
+.footer {
+    border-top: none;
+    margin-top: 40px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 60px;
+}
+
+/* 响应式设计 */
+/* 平板和中等屏幕 (1024px 及以下) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .nav-buttons {
+        padding: 0 30px 30px 30px;
+    }
+
+    .product-image-wrapper {
+        max-width: 450px;
+    }
+
+    .detail-header {
+        padding: 15px 30px;
+    }
+}
+
+/* 平板和小屏幕 (768px 及以下) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .product-image-section {
+        padding: 30px 0 20px 0;
+    }
+
+    .product-image-wrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .product-header {
+        padding: 20px 0 25px 0;
+    }
+
+    .product-name {
+        font-size: 1.4rem;
+    }
+
+    .product-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .product-id {
+        font-size: 0.8rem;
+    }
+
+    .nav-buttons {
+        padding: 0 20px 25px 20px;
+        gap: 10px;
+    }
+
+    .nav-button {
+        padding: 18px 20px;
+        font-size: 0.95rem;
+    }
+
+    .detail-header {
+        padding: 15px 20px;
+    }
+
+    .detail-title {
+        font-size: 1.25rem;
+    }
+
+    .social-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .video-section {
+        margin-bottom: 30px;
+    }
+
+    .detail-content {
+        padding: 30px 0;
+    }
+
+    .info-section-card {
+        padding: 20px;
+    }
+
+    .price-weight-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product-thumbnails {
+        gap: 10px;
+    }
+
+    .thumbnail-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    .info-label {
+        min-width: 120px;
+        font-size: 0.875rem;
+    }
+
+    .info-value {
+        font-size: 0.9rem;
+    }
+
+    .certifications-display {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* 手机屏幕 (480px 及以下) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .product-image-section {
+        padding: 25px 0 15px 0;
+    }
+
+    .product-image-wrapper {
+        padding: 0 5px;
+    }
+
+    .product-header {
+        padding: 15px 0 20px 0;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+    }
+
+    .product-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+    }
+
+    .product-id {
+        font-size: 0.75rem;
+    }
+
+    .nav-buttons {
+        padding: 0 15px 20px 15px;
+        gap: 8px;
+    }
+
+    .nav-button {
+        padding: 16px 15px;
+        font-size: 0.9rem;
+    }
+
+    .detail-header {
+        padding: 12px 15px;
+    }
+
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .detail-title {
+        font-size: 1.1rem;
+    }
+
+    .section-title-info {
+        font-size: 1rem;
+    }
+
+    .info-label {
+        min-width: 100px;
+        font-size: 0.8rem;
+    }
+
+    .info-value {
+        font-size: 0.85rem;
+    }
+
+    .product-name-info {
+        font-size: 1.5rem;
+    }
+
+    .price-weight-value {
+        font-size: 1.25rem;
+    }
+
+    .thumbnail-item {
+        width: 50px;
+        height: 50px;
+    }
+
+    .verified-icon-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .verified-icon-circle svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .verified-title {
+        font-size: 1.25rem;
+    }
+
+    .certification-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .iso-badge {
+        font-size: 0.6rem;
+    }
+
+    .eco-badge {
+        font-size: 2rem;
+    }
+}

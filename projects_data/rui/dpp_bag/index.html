@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字产品护照 | Digital Product Passport</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 主页 -->
+    <div id="homePage" class="page active">
+        <!-- 产品图片区域 -->
+        <section class="product-image-section">
+            <div class="container">
+                <div class="product-image-wrapper">
+                    <img id="productMainImage" src="" alt="Product Image" class="product-main-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品信息头部 -->
+        <header class="product-header">
+            <div class="container">
+                <div class="product-title-section">
+                    <h1 class="product-name" id="productName">PRODUCT NAME</h1>
+                    <h2 class="product-subtitle" id="productSubtitle">Product Subtitle</h2>
+                    <div class="product-id" id="productId">PRODUCT_ID</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 导航按钮区域 -->
+        <main class="main-content">
+            <div class="nav-buttons">
+                    <button class="nav-button" data-page="digital-twin">
+                        <span>Digital Twin</span>
+                    </button>
+                    <button class="nav-button" data-page="authentication">
+                        <span>Authentication</span>
+                    </button>
+                    <button class="nav-button" data-page="product-info">
+                        <span>Product Info</span>
+                    </button>
+                    <button class="nav-button" data-page="supply-chain">
+                        <span>Supply Chain</span>
+                    </button>
+                    <button class="nav-button" data-page="sustainability">
+                        <span>Sustainability</span>
+                    </button>
+                    <button class="nav-button" data-page="care-guide">
+                        <span>Care Guide</span>
+                    </button>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Digital Twin 详情页 -->
+    <div id="digital-twin" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Digital Twin</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <!-- 视频/3D模型区域 -->
+                <div class="video-section">
+                    <div class="video-wrapper">
+                        <video id="digitalTwinVideo" class="product-video" controls>
+                            <source src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <!-- 如果没有视频，显示图片 -->
+                        <img id="digitalTwinImage" src="" alt="Digital Twin" class="digital-twin-image" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Digital Twin 信息卡片 -->
+                <div class="info-cards-section">
+                    <h3 class="section-title">Digital Twin Information</h3>
+                    <div class="info-cards-grid" id="digitalTwinInfoCards"></div>
+                </div>
+
+                <!-- 社交媒体分享 -->
+                <div class="social-share-section">
+                    <h3 class="section-title">Share on Social Media</h3>
+                    <div class="social-buttons">
+                        <button class="social-btn instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </button>
+                        <button class="social-btn facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button class="social-btn tiktok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                            <span>TikTok</span>
+                        </button>
+                        <button class="social-btn twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            <span>Twitter</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NFT交易信息 -->
+                <div class="nft-section">
+                    <h3 class="section-title">NFT Trading Information</h3>
+                    <div class="nft-info">
+                        <p id="nftDescription"></p>
+                        <p class="nft-price" id="nftPrice"></p>
+                        <button class="nft-button" id="viewNFTBtn">View NFT Platform</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication 详情页 -->
+    <div id="authentication" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Authentication</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <div class="authentication-container">
+                    <!-- 验证状态 -->
+                    <div class="auth-verification-section">
+                        <div class="verified-icon-circle">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h2 class="verified-title">Verified</h2>
+                        <p class="verified-subtitle">This product is authentic</p>
+                    </div>
+
+                    <!-- Brand Statement -->
+                    <div class="info-card-section">
+                        <h3 class="info-card-title">Brand Statement</h3>
+                        <div class="info-card">
+                            <p id="brandStatement" class="info-card-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Product Information -->
+                    <div class="info-card-section">
+                        <h3 class="info-card-title">Product Information</h3>
+                        <div class="info-card">
+                            <div class="info-item">
+                                <span class="info-label">Product ID:</span>
+                                <span class="info-value" id="authProductId"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Made in:</span>
+                                <span class="info-value" id="madeIn"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Material Source:</span>
+                                <span class="info-value" id="materialSource"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Status:</span>
+                                <span class="info-value verified-status">Verified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ownership Information -->
+                    <div class="info-card-section">
+                        <h3 class="info-card-title">Ownership Information</h3>
+                        <div class="info-card">
+                            <div class="info-item">
+                                <span class="info-label">Current Owner:</span>
+                                <span class="info-value" id="currentOwner"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Purchase Date:</span>
+                                <span class="info-value" id="purchaseDate"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Transfer Count:</span>
+                                <span class="info-value" id="transferCount"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Ownership Button -->
+                    <div class="transfer-section">
+                        <button class="transfer-button" id="transferOwnershipBtn">Transfer Ownership</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Info 详情页 -->
+    <div id="product-info" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Product Info</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <div class="product-info-page-container">
+                    <!-- 产品图片区域 -->
+                    <div class="product-image-section-info">
+                        <img id="productMainImageInfo" src="" alt="Product" class="product-main-image-info">
+                        <div class="product-thumbnails" id="productThumbnails"></div>
+                    </div>
+
+                    <!-- 产品名称和型号 -->
+                    <div class="product-name-section">
+                        <h2 class="product-name-info" id="productNameInfo"></h2>
+                        <p class="product-model-info" id="productModelInfo"></p>
+                    </div>
+
+                    <!-- Overview -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Overview</h3>
+                        <p class="overview-text" id="overviewText"></p>
+                    </div>
+
+                    <!-- 价格和重量 -->
+                    <div class="price-weight-section">
+                        <div class="price-weight-item">
+                            <span class="price-weight-label">Price</span>
+                            <span class="price-weight-value" id="productPrice">$3,400</span>
+                        </div>
+                        <div class="price-weight-item">
+                            <span class="price-weight-label">Weight</span>
+                            <span class="price-weight-value" id="productWeight">1.3 kg</span>
+                        </div>
+                    </div>
+
+                    <!-- 可用颜色 -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Available Colors</h3>
+                        <div class="color-swatches" id="colorSwatches"></div>
+                    </div>
+
+                    <!-- 规格和特性 -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Specifications & Features</h3>
+                        <div class="specifications-content" id="specificationsContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supply Chain 详情页 -->
+    <div id="supply-chain" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Supply Chain</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <div class="supply-chain-container">
+                    <!-- Supply Chain Information -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Supply Chain Information</h3>
+                        <div class="supply-chain-info-list" id="supplyChainInfo"></div>
+                    </div>
+
+                    <!-- Carbon Emission Information -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Carbon Emission Information</h3>
+                        <div class="carbon-emission-info" id="carbonEmissionInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sustainability 详情页 -->
+    <div id="sustainability" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Sustainability</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <div class="sustainability-container">
+                    <!-- Sustainability Information -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Sustainability Information</h3>
+                        <div class="sustainability-info-list" id="sustainabilityInfo"></div>
+                    </div>
+
+                    <!-- Sustainability Statement -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Sustainability Statement</h3>
+                        <p id="sustainabilityPhilosophy" class="philosophy-text"></p>
+                    </div>
+
+                    <!-- Environmental Certifications -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Environmental Certifications</h3>
+                        <div class="certifications-display" id="certificationsDisplay"></div>
+                    </div>
+
+                    <!-- Sustainability Commitment -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Sustainability Commitment</h3>
+                        <div class="commitment-content" id="commitmentContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Care Guide 详情页 -->
+    <div id="care-guide" class="page detail-page">
+        <div class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <h1 class="detail-title">Care Guide</h1>
+        </div>
+
+        <div class="detail-content">
+            <div class="container">
+                <div class="care-guide-container">
+                    <!-- Care Instructions -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Care Instructions</h3>
+                        <div class="care-instructions-list" id="careInstructions"></div>
+                    </div>
+
+                    <!-- Recycling Program -->
+                    <div class="info-section-card">
+                        <h3 class="section-title-info">Recycling Program</h3>
+                        <div class="recycling-program-content" id="recyclingProgram"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

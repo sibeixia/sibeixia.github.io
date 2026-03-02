@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewelry Digital Product Passport</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .back-button {
+      background-color: #f5f5f5;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #000000;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #e8e8e8;
+    }
+
+    .page-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    /* Home Page Styles */
+    .home-container {
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    .product-image-container {
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: #f8f8f8;
+    }
+
+    .product-image-placeholder {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 120px;
+      opacity: 0.3;
+    }
+
+    .product-title-section {
+      text-align: center;
+      width: 100%;
+    }
+
+    .product-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: #000000;
+    }
+
+    .product-subtitle {
+      font-size: 16px;
+      color: #666666;
+      margin-bottom: 8px;
+    }
+
+    .product-id {
+      font-size: 14px;
+      color: #999999;
+    }
+
+    .nav-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-button {
+      width: 100%;
+      padding: 16px 24px;
+      background-color: #f5f5f5;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #000000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: #e8e8e8;
+      transform: translateY(-2px);
+    }
+
+    /* Common Styles */
+    .info-card {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 16px;
+      color: #666666;
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 16px;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Digital Twin Styles */
+    .video-player {
+      width: 100%;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .digital-twin-video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      background-color: #000000;
+      border-radius: 12px;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .video-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+
+    .video-error-text {
+      font-size: 12px;
+      opacity: 0.5;
+      color: #ff6b6b;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .info-card-item {
+      background-color: #f5f5f5;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #000000;
+    }
+
+    .social-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #ffffff;
+    }
+
+    .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .facebook { background-color: #1877f2; }
+    .tiktok { background-color: #000000; }
+    .twitter { background-color: #1da1f2; }
+
+    .nft-button {
+      width: 100%;
+      padding: 16px;
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Authentication Styles */
+    .verification-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 32px 0;
+      margin-bottom: 24px;
+    }
+
+    .verification-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #4caf50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .verified-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .transfer-button {
+      width: 100%;
+      padding: 16px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 24px;
+    }
+
+    /* Product Info Styles */
+    .main-image-container {
+      width: 100%;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .main-product-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #f8f8f8;
+    }
+
+    .main-image-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 150px;
+      opacity: 0.3;
+    }
+
+    .thumbnail-section {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .thumbnail {
+      flex: 1;
+      position: relative;
+    }
+
+    .thumbnail-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+    }
+
+    .thumbnail-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      opacity: 0.3;
+    }
+
+    .product-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 8px;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .swatch-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #e0e0e0;
+    }
+
+    .gold { background-color: #ffd700; }
+    .platinum { background-color: #e5e4e2; }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .feature-tag {
+      padding: 8px 16px;
+      background-color: #f5f5f5;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Page -->
+  <div id="home-page" class="page active">
+    <div class="home-container">
+      <div class="product-image-container">
+        <img src="images/jewelry-front.png" alt="Luxury Jewelry - Front View" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="product-image-placeholder" style="display: none;">💎</div>
+      </div>
+      <div class="product-title-section">
+        <h1 class="product-title">LUXURY JEWELRY COLLECTION</h1>
+        <p class="product-subtitle">High-End Fine Jewelry - Handcrafted Excellence</p>
+        <p class="product-id">JC2026001</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-button" onclick="showPage('digital-twin')">Digital Twin</button>
+        <button class="nav-button" onclick="showPage('authentication')">Authentication</button>
+        <button class="nav-button" onclick="showPage('product-info')">Product Info</button>
+        <button class="nav-button" onclick="showPage('supply-chain')">Supply Chain</button>
+        <button class="nav-button" onclick="showPage('sustainability')">Sustainability</button>
+        <button class="nav-button" onclick="showPage('care-guide')">Care Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Twin Page -->
+  <div id="digital-twin-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Digital Twin</h1>
+    </div>
+    <div class="video-player">
+      <video class="digital-twin-video" controls autoplay loop muted playsinline>
+        <source src="images/jewelry-3d.mp4" type="video/mp4">
+        <source src="images/jewelry-3d.webm" type="video/webm">
+        <source src="images/jewelry-3d.mov" type="video/quicktime">
+        <div class="video-placeholder">
+          <div class="video-icon">▶</div>
+          <p>3D Digital Twin Video</p>
+          <p class="video-error-text">Your browser does not support the video tag.</p>
+        </div>
+      </video>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Digital Twin Information</h2>
+      <div class="info-cards">
+        <div class="info-card-item">360° Digital Display</div>
+        <div class="info-card-item">Synchronized with Physical Product</div>
+        <div class="info-card-item">NFT Platform Trading Support</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Share on Social Media</h2>
+      <div class="social-buttons">
+        <button class="social-btn instagram">📷 Instagram</button>
+        <button class="social-btn facebook">f Facebook</button>
+        <button class="social-btn tiktok">♪ TikTok</button>
+        <button class="social-btn twitter">𝕏 X</button>
+      </div>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">NFT Trading Information</h2>
+      <p>Digital Twin version available for trading on NFT platform</p>
+      <p style="font-size: 18px; font-weight: 600; margin: 8px 0;">Price synchronized with physical product: $15,000</p>
+      <button class="nft-button">View NFT Platform</button>
+    </div>
+  </div>
+
+  <!-- Authentication Page -->
+  <div id="authentication-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Authentication</h1>
+    </div>
+    <div class="verification-section">
+      <div class="verification-icon">✓</div>
+      <h2 class="verified-title">Verified</h2>
+      <p>This product is authentic</p>
+    </div>
+    <div class="info-card">
+      <h3 class="card-title">Brand Statement</h3>
+      <p>Embracing sustainability, uniqueness, and global impact, our Luxury Jewelry Collection marks a new chapter in our journey. This collection seamlessly blends physical and digital realms, offering a unique experience. More than just jewelry, it embodies innovation. From cutting-edge design to sustainable practices, it reflects our commitment to excellence.</p>
+    </div>
+    <div class="info-card">
+      <h3 class="card-title">Product Information</h3>
+      <div class="info-row">
+        <span class="info-label">Product ID:</span>
+        <span class="info-value">JC2026001</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Made in:</span>
+        <span class="info-value">Switzerland</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Material Source:</span>
+        <span class="info-value">Ethically Sourced</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Status:</span>
+        <span class="info-value" style="color: #4caf50;">Verified</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3 class="card-title">Ownership Information</h3>
+      <div class="info-row">
+        <span class="info-label">Current Owner:</span>
+        <span class="info-value">Original Purchaser</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Purchase Date:</span>
+        <span class="info-value">2024-01-15</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Transfer Count:</span>
+        <span class="info-value">0</span>
+      </div>
+    </div>
+    <button class="transfer-button">Transfer Ownership</button>
+  </div>
+
+  <!-- Product Info Page -->
+  <div id="product-info-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Product Info</h1>
+    </div>
+    <div class="main-image-container">
+      <img src="images/jewelry-front.png" alt="Luxury Jewelry - Front View" class="main-product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="main-image-placeholder" style="display: none;">💎</div>
+    </div>
+    <div class="thumbnail-section">
+      <div class="thumbnail">
+        <img src="images/jewelry-back.png" alt="Luxury Jewelry - Back View" class="thumbnail-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="thumbnail-placeholder" style="display: none;">💎</div>
+      </div>
+      <div class="thumbnail">
+        <img src="images/jewelry-side.png" alt="Luxury Jewelry - Side View" class="thumbnail-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="thumbnail-placeholder" style="display: none;">💎</div>
+      </div>
+    </div>
+    <h2 class="product-name">LUXURY JEWELRY COLLECTION</h2>
+    <p style="color: #666; margin-bottom: 24px;">Model: JC2026001</p>
+    <div class="info-card">
+      <h3 class="card-title">Overview</h3>
+      <p>Embrace refined elegance with this luxury pearl jewelry piece, crafted with Japanese Akoya pearls and platinum to reflect timeless sophistication and contemporary design. Designed for discerning collectors, this piece highlights natural beauty, material durability, and fine craftsmanship, making it suitable for both formal occasions and everyday elegance.</p>
+    </div>
+    <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+      <div>
+        <div style="font-size: 14px; color: #666;">Price</div>
+        <div style="font-size: 24px; font-weight: 700;">$15,000</div>
+      </div>
+      <div>
+        <div style="font-size: 14px; color: #666;">Weight</div>
+        <div style="font-size: 24px; font-weight: 700;">25g</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3 class="card-title">Core Features</h3>
+      <div class="features">
+        <span class="feature-tag">Handcrafted</span>
+        <span class="feature-tag">Material Transparency</span>
+        <span class="feature-tag">Responsible Sourcing</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <h3 class="card-title">Specifications & Features</h3>
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Material Composition:</h4>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="padding-left: 20px; position: relative; margin-bottom: 8px;">• Japanese Akoya Pearls (Cultured, Japan)</li>
+          <li style="padding-left: 20px; position: relative; margin-bottom: 8px;">• Platinum (High-purity precious metal)</li>
+          <li style="padding-left: 20px; position: relative;">• Ethically sourced materials</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Craftsmanship:</h4>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="padding-left: 20px; position: relative; margin-bottom: 8px;">• Handcrafted by skilled artisans</li>
+          <li style="padding-left: 20px; position: relative; margin-bottom: 8px;">• Precision pearl setting techniques</li>
+          <li style="padding-left: 20px; position: relative;">• Balanced integration of traditional jewelry craftsmanship and modern design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supply Chain Page -->
+  <div id="supply-chain-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Supply Chain</h1>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Material Sourcing</h2>
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;">
+          <h3 style="font-size: 16px; font-weight: 600; color: #000;">Japanese Akoya Pearl Farms (Japan)</h3>
+          <p style="font-size: 14px; color: #000; line-height: 1.6;">Cultured saltwater pearls selected and graded for luster, shape, and surface quality.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="font-size: 16px; font-weight: 600; color: #000;">Platinum Suppliers and Refining Partners (Switzerland)</h3>
+          <p style="font-size: 14px; color: #000; line-height: 1.6;">Responsibly sourced and refined platinum used for chain, settings, and clasp components.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Manufacturing & Craftsmanship</h2>
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;">
+          <h3 style="font-size: 16px; font-weight: 600; color: #000;">Jewelry Workshop</h3>
+          <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 8px;">
+            <li style="font-size: 14px; color: #000; padding-left: 20px; position: relative; line-height: 1.6;">• Handcrafted assembly by skilled artisans</li>
+            <li style="font-size: 14px; color: #000; padding-left: 20px; position: relative; line-height: 1.6;">• Pearl arrangement, balancing, and secure setting</li>
+            <li style="font-size: 14px; color: #000; padding-left: 20px; position: relative; line-height: 1.6;">• Precision polishing and finishing of platinum components</li>
+          </ul>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h3 style="font-size: 16px; font-weight: 600; color: #000;">Special Craft Processes</h3>
+          <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 8px;">
+            <li style="font-size: 14px; color: #000; padding-left: 20px; position: relative; line-height: 1.6;">• Pearl grading and matching</li>
+            <li style="font-size: 14px; color: #000; padding-left: 20px; position: relative; line-height: 1.6;">• Fine platinum finishing to ensure durability and long-term wear</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Carbon Emission Information</h2>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Route 1:</div>
+          <div style="font-size: 16px; font-weight: 600;">Japanese Akoya Pearl Farms (Japan) → Pearl Processing & Sorting Facility</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Transport 1:</div>
+          <div style="font-size: 16px; font-weight: 600;">Certified secure regional transportation</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Route 2:</div>
+          <div style="font-size: 16px; font-weight: 600;">Pearl Processing & Sorting Facility → Jewelry Workshop (Switzerland)</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Transport 2:</div>
+          <div style="font-size: 16px; font-weight: 600;">Certified secure transportation</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Route 3:</div>
+          <div style="font-size: 16px; font-weight: 600;">Platinum Suppliers & Refining Partners (Switzerland) → Jewelry Workshop (Switzerland)</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Transport 3:</div>
+          <div style="font-size: 16px; font-weight: 600;">Certified secure transportation</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Route 4:</div>
+          <div style="font-size: 16px; font-weight: 600;">Jewelry Workshop (Switzerland) → Global Distributor</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Transport 4:</div>
+          <div style="font-size: 16px; font-weight: 600;">International freight (emissions managed through logistics efficiency measures)</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Route 5:</div>
+          <div style="font-size: 16px; font-weight: 600;">Global Distributor → Authorized Retail Stores</div>
+        </div>
+        <div>
+          <div style="font-size: 14px; color: #666; margin-bottom: 4px;">Transport 5:</div>
+          <div style="font-size: 16px; font-weight: 600;">Regional ground transportation</div>
+        </div>
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid #000;">
+          <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Carbon Emission:</div>
+          <div style="font-size: 18px; font-weight: 700;">Estimated: 0.40–0.60 kg CO₂e / piece</div>
+        </div>
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e0e0e0;">
+          <p style="font-size: 13px; color: #666; line-height: 1.6; font-style: italic;">Carbon emission values represent estimated transportation-related emissions across material sourcing, processing, manufacturing logistics, international distribution, and retail delivery stages. Manufacturing-related emissions are reported separately in the Sustainability section.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sustainability Page -->
+  <div id="sustainability-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Sustainability</h1>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Sustainability Information</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="padding: 12px 0; border-bottom: 1px solid #e0e0e0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 8px;">Material Responsibility:</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 14px; color: #000; line-height: 1.6;"><strong>Platinum:</strong> Responsibly sourced precious metal with high durability and high recyclability</div>
+            <div style="font-size: 14px; color: #000; line-height: 1.6;"><strong>Japanese Akoya Pearls:</strong> Cultured saltwater pearls produced through controlled aquaculture practices in Japan</div>
+            <div style="font-size: 14px; color: #000; line-height: 1.6;"><strong>Packaging:</strong> Recyclable packaging materials</div>
+          </div>
+        </div>
+        <div style="padding: 12px 0; border-bottom: 1px solid #e0e0e0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 4px;">Carbon Footprint:</div>
+          <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Estimated: 1.8–2.5 kg CO₂e / piece</div>
+          <p style="font-size: 13px; color: #666; line-height: 1.6; font-style: italic;">Cradle-to-gate manufacturing emissions, including pearl processing, precious metal processing, component fabrication, and jewelry assembly. Transportation-related emissions are disclosed separately in the Supply Chain section.</p>
+        </div>
+        <div style="padding: 12px 0; border-bottom: 1px solid #e0e0e0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 4px;">Water Footprint:</div>
+          <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Estimated: ~1,500–2,000 L / piece</div>
+          <p style="font-size: 13px; color: #666; line-height: 1.6; font-style: italic;">Water usage is primarily associated with pearl cultivation processes and precious metal processing and finishing.</p>
+        </div>
+        <div style="padding: 12px 0; border-bottom: 1px solid #e0e0e0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 8px;">Environmental Standards & Compliance:</div>
+          <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+            <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 20px; position: relative;">• Manufacturing and sourcing partners operate in accordance with the Responsible Jewellery Council (RJC) Code of Practices, covering ethical sourcing, environmental responsibility, and supply chain transparency</li>
+            <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 20px; position: relative;">• Japanese Akoya pearls are sourced from recognized pearl farms in Japan and supported by origin and quality documentation consistent with fine jewelry industry practices</li>
+            <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 20px; position: relative;">• Platinum sourcing and refining follow internationally recognized responsible precious metal sourcing principles</li>
+            <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 20px; position: relative;">• Designed to align with the European Union Digital Product Passport (DPP) regulatory framework, supporting material traceability, environmental transparency, and lifecycle information disclosure</li>
+          </ul>
+        </div>
+        <div style="padding: 12px 0; border-bottom: 1px solid #e0e0e0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 4px;">Energy Usage:</div>
+          <div style="font-size: 16px; color: #000; line-height: 1.6;">Manufacturing and processing facilities incorporate renewable energy sources where available, supporting gradual reductions in operational environmental impact.</div>
+        </div>
+        <div style="padding: 12px 0;">
+          <div style="font-size: 14px; color: #666; font-weight: 600; margin-bottom: 8px;">Sustainability Philosophy:</div>
+          <p style="font-size: 16px; color: #000; line-height: 1.6; margin-top: 8px;">This jewelry piece reflects a commitment to responsible material sourcing, refined craftsmanship, and long product lifecycles. By emphasizing durable platinum components and cultured Akoya pearls, the design supports repairability, reuse, and reduced environmental impact over time, while preserving timeless aesthetic and material value.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Care Guide Page -->
+  <div id="care-guide-page" class="page">
+    <div class="page-header">
+      <button class="back-button" onclick="showPage('home')">Back</button>
+      <h1 class="page-title">Care Guide</h1>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Care Instructions</h2>
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Gently wipe the pearls and platinum components with a soft, dry, lint-free cloth after each wear to remove skin oils and moisture</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Avoid contact with water, perfumes, cosmetics, hairspray, and household chemicals, as pearls are sensitive to acids and solvents</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Do not expose the jewelry to high heat, extreme temperature changes, or prolonged direct sunlight</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Avoid pulling, twisting, or impact that may loosen pearl settings or damage the stringing material</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Wear the necklace after applying makeup and fragrance, and remove it before bathing, swimming, or sleeping</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Store the necklace separately from other jewelry to prevent scratching of pearls and platinum surfaces</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">When not in use, keep the jewelry in a soft-lined jewelry box or protective pouch in a cool, dry environment</div>
+        <div style="padding: 16px 0; border-bottom: 1px solid #e0e0e0; font-size: 14px; line-height: 1.6;">Have the necklace professionally inspected and restrung every 1–2 years, depending on frequency of wear</div>
+        <div style="padding: 16px 0; font-size: 14px; line-height: 1.6;">Pearls should always be the last item worn and the first item removed.</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Care & Longevity Notes</h2>
+      <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 12px;">
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Cultured Akoya pearls are organic materials and require gentler care than gemstones</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Platinum is highly durable but benefits from periodic professional cleaning to maintain its finish</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Proper care and regular maintenance significantly extend product lifespan, supporting long-term use and reduced environmental impact</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h2 class="card-title">Recycling & Reuse Program</h2>
+      <h3 style="font-size: 18px; font-weight: 600; color: #000; margin-bottom: 12px;">Jewelry Circular Care Program</h3>
+      <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 12px;">
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Eligible jewelry may be returned for professional refurbishment, repair, or component reuse</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Platinum components can be recovered and recycled through authorized precious metal recycling partners</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Pearls are individually assessed for potential reuse or responsible disposal based on condition</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• The program supports participation in certified second-hand and resale platforms, helping extend product lifespan and promote circular value</li>
+        <li style="font-size: 14px; color: #000; line-height: 1.6; padding-left: 24px; position: relative;">• Guidance is provided for environmentally responsible end-of-life management in alignment with Digital Product Passport (DPP) principles</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      
+      // Show selected page
+      const pageMap = {
+        'home': 'home-page',
+        'digital-twin': 'digital-twin-page',
+        'authentication': 'authentication-page',
+        'product-info': 'product-info-page',
+        'supply-chain': 'supply-chain-page',
+        'sustainability': 'sustainability-page',
+        'care-guide': 'care-guide-page'
+      };
+      
+      const targetPage = document.getElementById(pageMap[pageId]);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
+

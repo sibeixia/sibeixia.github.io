@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Info - 数字产品护照</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-body">
+    <div class="container page-container">
+        <!-- Header -->
+        <header class="page-header">
+            <a href="index.html" class="back-button">Back</a>
+            <h1 class="page-title">Product Info</h1>
+        </header>
+
+        <!-- Product Images -->
+        <div class="product-images-section">
+            <div class="main-product-image">
+                <img id="mainProductImage" src="images/shoe-front.jpg" alt="Uptown Low-Top Sneaker - Front View" class="product-main-image-view" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="product-image-placeholder" style="display: none;">
+                    <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 12h16M4 12l2-2m-2 2l2 2m14-2l-2-2m2 2l-2 2M4 8h16M4 16h16"></path>
+                        <path d="M8 6h8M8 18h8"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="thumbnail-images">
+                <div class="thumbnail active" onclick="changeMainImage('images/shoe-front.jpg', this)">
+                    <img src="images/shoe-front.jpg" alt="Front View" class="thumbnail-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="thumbnail-placeholder" style="display: none;"></div>
+                </div>
+                <div class="thumbnail" onclick="changeMainImage('images/shoe-side.jpg', this)">
+                    <img src="images/shoe-side.jpg" alt="Side View" class="thumbnail-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="thumbnail-placeholder gray" style="display: none;"></div>
+                </div>
+                <div class="thumbnail" onclick="changeMainImage('images/shoe-back.jpg', this)">
+                    <img src="images/shoe-back.jpg" alt="Back View" class="thumbnail-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="thumbnail-placeholder gray" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Name -->
+        <div class="product-name-section">
+            <h2 class="product-name-large">Uptown Low-Top Sneaker</h2>
+            <p class="product-model">Model: SN2025001</p>
+        </div>
+
+        <!-- Overview Section -->
+        <section class="info-section">
+            <h2 class="section-title">Overview</h2>
+            <p class="overview-text">
+                Step into style with the Uptown Low-Top Sneaker, crafted from premium sustainable 
+                materials meeting the highest standards of comfort and durability. Designed for the 
+                modern urban explorer, this sneaker combines classic aesthetics with eco-friendly 
+                innovation, ensuring versatility for everyday wear.
+            </p>
+        </section>
+
+        <!-- Price and Weight -->
+        <div class="price-weight-section">
+            <div class="price-weight-item">
+                <span class="price-weight-label">Price</span>
+                <span class="price-weight-value">$1100</span>
+            </div>
+            <div class="price-weight-item">
+                <span class="price-weight-label">Weight</span>
+                <span class="price-weight-value">320g</span>
+            </div>
+        </div>
+
+        <!-- Available Colors -->
+        <section class="info-section">
+            <h2 class="section-title">Available Colors</h2>
+            <div class="color-swatches">
+                <div class="color-swatch">
+                    <div class="color-circle cream-white"></div>
+                    <span>Cream White</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Select Size -->
+        <section class="info-section">
+            <div class="size-header">
+                <h2 class="section-title">Select Size</h2>
+                <a href="#" class="size-guide-link">Size Guide</a>
+            </div>
+            <div class="size-buttons">
+                <button class="size-btn">US 7</button>
+                <button class="size-btn">US 8</button>
+                <button class="size-btn">US 9</button>
+                <button class="size-btn">US 10</button>
+                <button class="size-btn">US 11</button>
+            </div>
+        </section>
+
+        <!-- Core Features -->
+        <section class="info-section">
+            <h2 class="section-title">Core Features</h2>
+            <div class="feature-tags">
+                <span class="feature-tag">Comfortable</span>
+                <span class="feature-tag">Breathable</span>
+                <span class="feature-tag">Lightweight</span>
+                <span class="feature-tag">Durable</span>
+            </div>
+        </section>
+
+        <!-- Specifications & Features -->
+        <section class="info-section">
+            <h2 class="section-title">Specifications & Features</h2>
+            <div class="spec-box">
+                <h3 class="spec-title">Material Composition</h3>
+                <div class="spec-content">
+                    <p><strong>Upper</strong></p>
+                    <ul>
+                        <li><strong>Suede Leather (Beige / Off-white)</strong><br>
+                        Main upper material, providing durability, softness, and a premium tactile finish</li>
+                        <li><strong>Knitted Polyester Panels</strong><br>
+                        Decorative and functional patterned areas made from polyester knit, offering breathability, flexibility, and visual texture</li>
+                        <li><strong>Reinforced Toe Area</strong><br>
+                        Structural reinforcement to improve durability and shape retention</li>
+                    </ul>
+                    <p><strong>Lining</strong></p>
+                    <ul>
+                        <li><strong>Cotton–Polyester Blend Lining (Recyclable)</strong><br>
+                        Inner lining designed for comfort, moisture management, and recyclability</li>
+                    </ul>
+                    <p><strong>Sole</strong></p>
+                    <ul>
+                        <li><strong>Rubber Outsole (Recyclable)</strong><br>
+                        Durable rubber outsole providing traction and long-term wear performance</li>
+                    </ul>
+                    <p><strong>Laces & Details</strong></p>
+                    <ul>
+                        <li><strong>Cotton–Polyester Blend Laces (Recyclable)</strong><br>
+                        Balanced softness and strength with enhanced durability</li>
+                        <li><strong>Stitching and Assembly Components</strong><br>
+                        Selected to support durability and extended product lifecycle</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function changeMainImage(imageSrc, thumbnailElement) {
+            const mainImage = document.getElementById('mainProductImage');
+            if (mainImage) {
+                mainImage.src = imageSrc;
+            }
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnailElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
