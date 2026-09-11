@@ -284,8 +284,12 @@ function draw_armstrong(data) {
         var h_point = makerjs.path.intersection(model_temp_h_point.paths.arc1, model_temp_h_point.paths.line1).intersectionPoints[0];
         // console.log(h_point)
         var i_point = [measurements.Dart_Placement_Back, -0.125]
-        var k_point = [measurements.Dart_Placement_Back + 1.5, -0.125]
-        var m_point = [measurements.Waist_Arc_Back + 1.75, -0.1875]
+
+        // var k_point = [measurements.Dart_Placement_Back + 1.5, -0.125]
+        // var m_point = [measurements.Waist_Arc_Back + 1.75, -0.1875]
+// adjusted bodice back waist dart amount for sizeNA 2017, larger size
+        var k_point = [measurements.Dart_Placement_Back + 0.25, -0.125]
+        var m_point = [measurements.Waist_Arc_Back + 0.5, -0.1875]
 
         var model_temp_n_point = {
             paths: {

@@ -10,7 +10,19 @@ var DXF = [];
 var SVG = [];
 function filename_inital(pattern_mentod) {
     if (pattern_mentod == 'Armstrong') {
-        filename = 'Armstrong.csv'
+        // filename = 'Armstrong.csv'
+        // don't forget to change the back waist dart amount under armstrong.js
+        // filename = 'armstrong_2017_all.csv'
+        // filename = 'armstrong_2017_midwest.csv'
+        // filename = 'armstrong_2017_northeast.csv'
+        // filename = 'armstrong_2017_west.csv'
+        filename = 'armstrong_2017_south.csv'
+
+        // filename = 'armstrong_2002_all.csv'
+        // filename = 'armstrong_2002_midwest.csv'
+        // filename = 'armstrong_2002_northeast.csv'
+        // filename = 'armstrong_2002_west.csv'
+        // filename = 'armstrong_2002_south.csv'        
         method = 'armstrong'
     } else if (pattern_mentod == 'Others') {
         filename = 'test.csv'
